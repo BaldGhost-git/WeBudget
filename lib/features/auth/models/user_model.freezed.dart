@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppUser {
 
- String get email; DateTime? get modifiedAt;
+ int get userId; String get name; String get email; DateTime get createdAt; DateTime? get modifiedAt;
 /// Create a copy of AppUser
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $AppUserCopyWith<AppUser> get copyWith => _$AppUserCopyWithImpl<AppUser>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUser&&(identical(other.email, email) || other.email == email)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppUser&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,modifiedAt);
+int get hashCode => Object.hash(runtimeType,userId,name,email,createdAt,modifiedAt);
 
 @override
 String toString() {
-  return 'AppUser(email: $email, modifiedAt: $modifiedAt)';
+  return 'AppUser(userId: $userId, name: $name, email: $email, createdAt: $createdAt, modifiedAt: $modifiedAt)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $AppUserCopyWith<$Res>  {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) _then) = _$AppUserCopyWithImpl;
 @useResult
 $Res call({
- String email, DateTime? modifiedAt
+ int userId, String name, String email, DateTime createdAt, DateTime? modifiedAt
 });
 
 
@@ -63,10 +63,13 @@ class _$AppUserCopyWithImpl<$Res>
 
 /// Create a copy of AppUser
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? modifiedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,Object? name = null,Object? email = null,Object? createdAt = null,Object? modifiedAt = freezed,}) {
   return _then(AppUser(
-email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,modifiedAt: freezed == modifiedAt ? _self.modifiedAt : modifiedAt // ignore: cast_nullable_to_non_nullable
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,modifiedAt: freezed == modifiedAt ? _self.modifiedAt : modifiedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
 }

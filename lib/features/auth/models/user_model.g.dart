@@ -7,13 +7,19 @@ part of 'user_model.dart';
 // **************************************************************************
 
 AppUser _$AppUserFromJson(Map<String, dynamic> json) => AppUser(
+  userId: (json['user_id'] as num).toInt(),
+  name: json['name'] as String,
   email: json['email'] as String,
-  modifiedAt: json['modifiedAt'] == null
+  createdAt: DateTime.parse(json['created_at'] as String),
+  modifiedAt: json['modified_at'] == null
       ? null
-      : DateTime.parse(json['modifiedAt'] as String),
+      : DateTime.parse(json['modified_at'] as String),
 );
 
 Map<String, dynamic> _$AppUserToJson(AppUser instance) => <String, dynamic>{
+  'user_id': instance.userId,
+  'name': instance.name,
   'email': instance.email,
-  'modifiedAt': instance.modifiedAt?.toIso8601String(),
+  'created_at': instance.createdAt.toIso8601String(),
+  'modified_at': instance.modifiedAt?.toIso8601String(),
 };

@@ -23,7 +23,7 @@ final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
-String _$userControllerHash() => r'9fc735d0e6c8493582a1066ebdef33f9583e8163';
+String _$userControllerHash() => r'1f81dee69abdaa2b97762574bee7b690e0cd26ad';
 
 /// See also [UserController].
 @ProviderFor(UserController)
