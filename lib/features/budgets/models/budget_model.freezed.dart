@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Budget {
 
- int get budgetId; String get name; String? get description; int? get resetDay; DateTime get startDate; bool get status; int get totalAmount; DateTime get createdAt; DateTime? get modifiedAt;
+ int? get budgetId; String get name; String? get description; int? get resetDay; DateTime get startDate; bool get status; int get totalAmount; DateTime get createdAt; DateTime? get modifiedAt;
 /// Create a copy of Budget
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $BudgetCopyWith<$Res>  {
   factory $BudgetCopyWith(Budget value, $Res Function(Budget) _then) = _$BudgetCopyWithImpl;
 @useResult
 $Res call({
- int budgetId, String name, String? description, int? resetDay, DateTime startDate, bool status, int totalAmount, DateTime createdAt, DateTime? modifiedAt
+ int? budgetId, String name, String? description, int? resetDay, DateTime startDate, bool status, int totalAmount, DateTime createdAt, DateTime? modifiedAt
 });
 
 
@@ -63,10 +63,10 @@ class _$BudgetCopyWithImpl<$Res>
 
 /// Create a copy of Budget
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? budgetId = null,Object? name = null,Object? description = freezed,Object? resetDay = freezed,Object? startDate = null,Object? status = null,Object? totalAmount = null,Object? createdAt = null,Object? modifiedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? budgetId = freezed,Object? name = null,Object? description = freezed,Object? resetDay = freezed,Object? startDate = null,Object? status = null,Object? totalAmount = null,Object? createdAt = null,Object? modifiedAt = freezed,}) {
   return _then(Budget(
-budgetId: null == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+budgetId: freezed == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
+as int?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,resetDay: freezed == resetDay ? _self.resetDay : resetDay // ignore: cast_nullable_to_non_nullable
 as int?,startDate: null == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable

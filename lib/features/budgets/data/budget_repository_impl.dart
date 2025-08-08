@@ -8,9 +8,9 @@ class BudgetRepositoryImpl implements BudgetRepository {
   BudgetRepositoryImpl({required this.client});
 
   @override
-  createBudget() {
-    // TODO: implement createBudget
-    throw UnimplementedError();
+  Future<String> createBudget(Map<String, dynamic> json) async {
+    final data = await client.from('Budgets').insert(json).select();
+    return "${data.first["name"]}}";
   }
 
   @override

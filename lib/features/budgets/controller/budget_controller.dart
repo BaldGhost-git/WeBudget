@@ -8,18 +8,35 @@ import 'package:we_budget/features/budgets/models/budget_model.dart';
 part 'budget_controller.g.dart';
 
 @riverpod
-class BudgetController extends _$BudgetController {
-  late final BudgetRepository repository;
+class BudgetList extends _$BudgetList {
   @override
   Future<List<Budget>?> build() async {
-    repository = ref.read(budgetRepositoryProvider);
-    return getBudgets();
+    return refreshBudgets();
   }
 
-  Future<List<Budget>?> getBudgets({int? budgetId}) async {
+  Future<List<Budget>?> refreshBudgets({int? budgetId}) async {
     state = AsyncValue.loading();
-    state = await AsyncValue.guard(() => repository.readBudget(budgetId));
-    return repository.readBudget(budgetId);
+    final result = await AsyncValue.guard(
+      () => ref.read(budgetRepositoryProvider).readBudget(budgetId),
+    );
+    state = result;
+    return result.value;
+  }
+}
+
+@riverpod
+class BudgetController extends _$BudgetController {
+  @override
+  Future<String?> build() async {}
+
+  Future<void> createBudget(Budget newBudget) async {
+    state = AsyncValue.loading();
+    state = await AsyncValue.guard(
+      () => ref.read(budgetRepositoryProvider).createBudget(newBudget.toJson()),
+    );
+    if (state is AsyncData) {
+      ref.invalidate(budgetListProvider);
+    }
   }
 }
 

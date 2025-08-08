@@ -9,6 +9,7 @@ class WeBudgetApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(colorSchemeSeed: Colors.deepOrangeAccent),
       routerConfig: ref.watch(getRoutesProvider),
     );
   }

@@ -7,12 +7,12 @@ part of 'budget_model.dart';
 // **************************************************************************
 
 Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
-  budgetId: (json['budget_id'] as num).toInt(),
+  budgetId: (json['budget_id'] as num?)?.toInt(),
   name: json['name'] as String,
   description: json['description'] as String?,
-  resetDay: (json['reset_day'] as num?)?.toInt(),
+  resetDay: (json['reset_day'] as num?)?.toInt() ?? 30,
   startDate: DateTime.parse(json['start_date'] as String),
-  status: json['status'] as bool,
+  status: json['status'] as bool? ?? true,
   totalAmount: (json['total_amount'] as num).toInt(),
   createdAt: DateTime.parse(json['created_at'] as String),
   modifiedAt: json['modified_at'] == null
@@ -21,7 +21,7 @@ Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
 );
 
 Map<String, dynamic> _$BudgetToJson(Budget instance) => <String, dynamic>{
-  'budget_id': instance.budgetId,
+  if (instance.budgetId case final value?) 'budget_id': value,
   'name': instance.name,
   'description': instance.description,
   'reset_day': instance.resetDay,

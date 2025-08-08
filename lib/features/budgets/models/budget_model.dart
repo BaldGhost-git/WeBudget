@@ -6,8 +6,8 @@ part 'budget_model.freezed.dart';
 @JsonSerializable()
 @Freezed(copyWith: true)
 class Budget with _$Budget {
-  @JsonKey(name: "budget_id")
-  final int budgetId;
+  @JsonKey(name: "budget_id", includeIfNull: false)
+  final int? budgetId;
   final String name;
   final String? description;
   @JsonKey(name: "reset_day")
@@ -23,12 +23,12 @@ class Budget with _$Budget {
   final DateTime? modifiedAt;
 
   Budget({
-    required this.budgetId,
+    this.budgetId,
     required this.name,
     this.description,
-    this.resetDay,
+    this.resetDay = 30,
     required this.startDate,
-    required this.status,
+    this.status = true,
     required this.totalAmount,
     required this.createdAt,
     this.modifiedAt,
