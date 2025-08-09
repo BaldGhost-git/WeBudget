@@ -6,6 +6,146 @@ part of 'budget_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$budgetByIdHash() => r'a30248d0fb685b159a56de632be33462a4891778';
+
+/// Copied from Dart SDK
+class _SystemHash {
+  _SystemHash._();
+
+  static int combine(int hash, int value) {
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + value);
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
+    return hash ^ (hash >> 6);
+  }
+
+  static int finish(int hash) {
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
+    // ignore: parameter_assignments
+    hash = hash ^ (hash >> 11);
+    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  }
+}
+
+/// See also [budgetById].
+@ProviderFor(budgetById)
+const budgetByIdProvider = BudgetByIdFamily();
+
+/// See also [budgetById].
+class BudgetByIdFamily extends Family<AsyncValue<Budget>> {
+  /// See also [budgetById].
+  const BudgetByIdFamily();
+
+  /// See also [budgetById].
+  BudgetByIdProvider call(int id) {
+    return BudgetByIdProvider(id);
+  }
+
+  @override
+  BudgetByIdProvider getProviderOverride(
+    covariant BudgetByIdProvider provider,
+  ) {
+    return call(provider.id);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'budgetByIdProvider';
+}
+
+/// See also [budgetById].
+class BudgetByIdProvider extends AutoDisposeFutureProvider<Budget> {
+  /// See also [budgetById].
+  BudgetByIdProvider(int id)
+    : this._internal(
+        (ref) => budgetById(ref as BudgetByIdRef, id),
+        from: budgetByIdProvider,
+        name: r'budgetByIdProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$budgetByIdHash,
+        dependencies: BudgetByIdFamily._dependencies,
+        allTransitiveDependencies: BudgetByIdFamily._allTransitiveDependencies,
+        id: id,
+      );
+
+  BudgetByIdProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final int id;
+
+  @override
+  Override overrideWith(
+    FutureOr<Budget> Function(BudgetByIdRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: BudgetByIdProvider._internal(
+        (ref) => create(ref as BudgetByIdRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<Budget> createElement() {
+    return _BudgetByIdProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is BudgetByIdProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin BudgetByIdRef on AutoDisposeFutureProviderRef<Budget> {
+  /// The parameter `id` of this provider.
+  int get id;
+}
+
+class _BudgetByIdProviderElement
+    extends AutoDisposeFutureProviderElement<Budget>
+    with BudgetByIdRef {
+  _BudgetByIdProviderElement(super.provider);
+
+  @override
+  int get id => (origin as BudgetByIdProvider).id;
+}
+
 String _$budgetRepositoryHash() => r'364ff7b0d08d3827ed4430de6b3aa4df0cb90b7b';
 
 /// See also [budgetRepository].
@@ -39,7 +179,7 @@ final budgetListProvider =
     );
 
 typedef _$BudgetList = AutoDisposeAsyncNotifier<List<Budget>?>;
-String _$budgetControllerHash() => r'76be55716d394a0ffb8ecad64a51c49c0dd0231f';
+String _$budgetControllerHash() => r'07fcb907a6060467dcb8a92dfee0ff4d25893b5f';
 
 /// See also [BudgetController].
 @ProviderFor(BudgetController)

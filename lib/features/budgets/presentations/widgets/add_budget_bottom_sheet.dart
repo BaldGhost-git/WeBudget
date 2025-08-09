@@ -1,111 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
 
 class AddBudgetBottomSheet extends StatefulWidget {
-  const AddBudgetBottomSheet({super.key});
+  const AddBudgetBottomSheet(
+    this.formKey, {
+    super.key,
+    required this.onSubmit,
+    this.budget,
+  });
+
+  final GlobalKey<FormBuilderState> formKey;
+  final void Function()? onSubmit;
+  final Budget? budget;
 
   @override
   State<AddBudgetBottomSheet> createState() => _AddBudgetBottomSheetState();
 }
 
 class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
-  final _formKey = GlobalKey<FormState>();
-  late final TextEditingController budgetNameController;
-  late final TextEditingController budgetAmountController;
   late final TextEditingController budgetStartDateController;
-  late final TextEditingController budgetResetDayController;
   final double horizontalDimens = 5;
   final double verticalDimens = 5;
   DateTime? _selectedDate;
+  final DateFormat dateFormat = DateFormat('dd MMM y');
 
   @override
   void initState() {
     super.initState();
-    budgetNameController = TextEditingController();
-    budgetAmountController = TextEditingController();
     budgetStartDateController = TextEditingController();
-    budgetResetDayController = TextEditingController();
   }
 
   @override
   void dispose() {
-    budgetNameController.dispose();
-    budgetAmountController.dispose();
     budgetStartDateController.dispose();
-    budgetResetDayController.dispose();
     super.dispose();
-  }
-
-  _selectDate(BuildContext context) async {
-    DateTime? newSelectedDate = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2040),
-    );
-
-    if (newSelectedDate != null) {
-      _selectedDate = newSelectedDate;
-      budgetStartDateController
-        ..text = DateFormat('dd MMMM y').format(_selectedDate!)
-        ..selection = TextSelection.fromPosition(
-          TextPosition(
-            offset: budgetStartDateController.text.length,
-            affinity: TextAffinity.upstream,
-          ),
-        );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final initialDate =
+        _selectedDate ?? widget.budget?.startDate ?? DateTime.now();
+    final formState = widget.formKey.currentState;
 
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: horizontalDimens + 10,
         vertical: verticalDimens,
       ),
-      child: Form(
+      child: FormBuilder(
         autovalidateMode: AutovalidateMode.onUnfocus,
-        key: _formKey,
+        key: widget.formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('New Budget', style: theme.textTheme.titleLarge),
                 FilledButton.icon(
-                  onPressed: () {
-                    _formKey.currentState?.save();
-                    if (_formKey.currentState?.validate() ?? false) {
-                      Navigator.of(context).pop(
-                        Budget(
-                          name: budgetNameController.text,
-                          startDate: _selectedDate ?? DateTime.now(),
-                          totalAmount: int.parse(budgetAmountController.text),
-                          createdAt: DateTime.now(),
-                        ),
-                      );
-                    }
-                  },
+                  onPressed: formState?.validate() ?? false
+                      ? widget.onSubmit
+                      : null,
                   label: const Text('Add'),
                   icon: const Icon(Icons.add),
                 ),
               ],
             ),
             const Gap(8),
-            TextFormField(
+            FormBuilderTextField(
+              name: 'name',
               validator: (value) {
                 if (value?.trim().isEmpty ?? true) {
                   return "Insert your budget name";
                 }
                 return null;
               },
-              controller: budgetNameController,
+              initialValue: widget.budget?.name,
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.next,
               decoration: const InputDecoration(
@@ -116,7 +90,8 @@ class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
               ),
             ),
             const Gap(12),
-            TextFormField(
+            FormBuilderTextField(
+              name: 'total_amount',
               validator: (value) {
                 if (value?.trim().isEmpty ?? true) {
                   return "Insert your budget amount";
@@ -126,7 +101,7 @@ class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
                 }
                 return null;
               },
-              controller: budgetAmountController,
+              initialValue: widget.budget?.totalAmount.toString(),
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
               decoration: const InputDecoration(
@@ -137,18 +112,55 @@ class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
               ),
             ),
             const Gap(12),
-            TextFormField(
-              canRequestFocus: false,
-              controller: budgetStartDateController,
-              onTap: () {
-                _selectDate(context);
-              },
+            FormBuilderDateTimePicker(
+              initialValue: initialDate,
+              inputType: InputType.date,
+              format: dateFormat,
+              name: 'start_date',
+              firstDate: DateTime(2000),
+              lastDate: DateTime(2040),
               decoration: const InputDecoration(
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 labelText: 'Start Date',
                 border: OutlineInputBorder(),
               ),
             ),
+            const Gap(12),
+            FormBuilderTextField(
+              name: 'reset_days',
+              initialValue: widget.budget?.resetDay.toString(),
+              decoration: const InputDecoration(
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                labelText: 'Reset Days',
+                hintText: '30',
+                border: OutlineInputBorder(),
+              ),
+              validator: (value) {
+                if (value?.trim().isEmpty ?? true) {
+                  return "Insert the number of days to reset";
+                }
+                if (int.tryParse(value!) == null || int.tryParse(value)! <= 0) {
+                  return "Insert the valid number of days";
+                }
+                return null;
+              },
+            ),
+            const Gap(12),
+            if (formState?.instantValue["start_date"] != null &&
+                formState?.instantValue["reset_days"] != null) ...[
+              Text("Your budget will be resetted in"),
+              Text(
+                dateFormat.format(
+                  (formState?.instantValue["start_date"] as DateTime).add(
+                    Duration(
+                      days: int.parse(
+                        formState?.instantValue["reset_days"] as String,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ],
         ),
       ),

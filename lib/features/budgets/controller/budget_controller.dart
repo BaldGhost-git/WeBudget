@@ -38,7 +38,36 @@ class BudgetController extends _$BudgetController {
       ref.invalidate(budgetListProvider);
     }
   }
+
+  Future<void> updateBudget(Budget newBudget) async {
+    state = AsyncValue.loading();
+    state = await AsyncValue.guard(
+      () => ref.read(budgetRepositoryProvider).updateBudget(newBudget.toJson()),
+    );
+    if (state is AsyncData) {
+      ref.invalidate(budgetListProvider);
+    }
+  }
+
+  Future<void> deleteBudget(int budgetId) async {
+    state = AsyncValue.loading();
+    state = await AsyncValue.guard(
+      () => ref.read(budgetRepositoryProvider).deleteBudget(budgetId),
+    );
+    if (state is AsyncData) {
+      ref.invalidate(budgetListProvider);
+    }
+  }
 }
+
+@riverpod
+Future<Budget> budgetById(Ref ref, int id) {
+  final repo = ref.read(budgetRepositoryProvider);
+  final budget = repo.readBudget(id).then((data) => data!.first);
+  return budget;
+}
+
+final pageProvider = StateProvider<int>((ref) => 0);
 
 @riverpod
 BudgetRepository budgetRepository(Ref ref) {

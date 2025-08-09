@@ -23,11 +23,12 @@ Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
 Map<String, dynamic> _$BudgetToJson(Budget instance) => <String, dynamic>{
   if (instance.budgetId case final value?) 'budget_id': value,
   'name': instance.name,
-  'description': instance.description,
-  'reset_day': instance.resetDay,
+  if (instance.description case final value?) 'description': value,
+  if (instance.resetDay case final value?) 'reset_day': value,
   'start_date': instance.startDate.toIso8601String(),
   'status': instance.status,
   'total_amount': instance.totalAmount,
   'created_at': instance.createdAt.toIso8601String(),
-  'modified_at': instance.modifiedAt?.toIso8601String(),
+  if (instance.modifiedAt?.toIso8601String() case final value?)
+    'modified_at': value,
 };

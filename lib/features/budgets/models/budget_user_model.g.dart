@@ -23,5 +23,6 @@ Map<String, dynamic> _$BudgetUserModelToJson(BudgetUserModel instance) =>
       'userId': instance.userId,
       'roleId': instance.roleId,
       'createdAt': instance.createdAt.toIso8601String(),
-      'modifiedAt': instance.modifiedAt?.toIso8601String(),
+      if (instance.modifiedAt?.toIso8601String() case final value?)
+        'modifiedAt': value,
     };

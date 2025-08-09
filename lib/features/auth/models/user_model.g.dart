@@ -21,5 +21,6 @@ Map<String, dynamic> _$AppUserToJson(AppUser instance) => <String, dynamic>{
   'name': instance.name,
   'email': instance.email,
   'created_at': instance.createdAt.toIso8601String(),
-  'modified_at': instance.modifiedAt?.toIso8601String(),
+  if (instance.modifiedAt?.toIso8601String() case final value?)
+    'modified_at': value,
 };

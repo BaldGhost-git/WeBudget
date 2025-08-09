@@ -37,4 +37,11 @@ class Budget with _$Budget {
   factory Budget.fromJson(Map<String, dynamic> json) => _$BudgetFromJson(json);
 
   Map<String, dynamic> toJson() => _$BudgetToJson(this);
+
+  int get daysBeforeReset => DateTime.now()
+      .add(Duration(days: resetDay!))
+      .difference(DateTime.now())
+      .inDays;
+
+  DateTime get resetDate => DateTime.now().add(Duration(days: resetDay!));
 }

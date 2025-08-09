@@ -7,9 +7,15 @@ class WeBudgetApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final inputDecorationTheme = Theme.of(context).inputDecorationTheme;
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: Colors.deepOrangeAccent),
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepOrangeAccent,
+        inputDecorationTheme: inputDecorationTheme.copyWith(
+          hintStyle: TextStyle(color: Colors.grey[600]),
+        ),
+      ),
       routerConfig: ref.watch(getRoutesProvider),
     );
   }

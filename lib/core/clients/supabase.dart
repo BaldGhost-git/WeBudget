@@ -8,3 +8,12 @@ part 'supabase.g.dart';
 SupabaseClient supabaseInstance(Ref ref) {
   return Supabase.instance.client;
 }
+
+extension ConditionalFilter on PostgrestFilterBuilder {
+  PostgrestFilterBuilder maybeEq(String column, dynamic value) {
+    if (value != null) {
+      return eq(column, value);
+    }
+    return this;
+  }
+}

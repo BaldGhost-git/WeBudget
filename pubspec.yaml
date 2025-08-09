@@ -19,6 +19,8 @@ dependencies:
   gap: ^3.0.1
   json_serializable: ^6.9.5
   intl: ^0.20.2
+  json_annotation: ^4.9.0
+  flutter_form_builder: ^10.1.0
 
 dev_dependencies:
   flutter_test:
