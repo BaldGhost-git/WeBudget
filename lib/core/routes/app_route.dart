@@ -6,10 +6,11 @@ import 'package:we_budget/features/auth/presentations/login_screen.dart';
 import 'package:we_budget/features/budgets/presentations/budget_detail.dart';
 import 'package:we_budget/features/home/presentations/home_screen.dart';
 import 'package:we_budget/features/settings/presentations/settings_screen.dart';
+import 'package:we_budget/features/transactions/presentations/transactions_create_screen.dart';
 
 part 'app_route.g.dart';
 
-enum AppRoute { auth, home, budget, transactions, settings }
+enum AppRoute { auth, home, budget, transactions, createTransactions, settings }
 
 @Riverpod(keepAlive: true)
 GoRouter getRoutes(Ref ref) {
@@ -38,6 +39,11 @@ GoRouter getRoutes(Ref ref) {
         path: SettingsScreen.path,
         name: AppRoute.settings.name,
         builder: (context, state) => SettingsScreen(),
+      ),
+      GoRoute(
+        path: CreateTransactionScreen.path,
+        name: AppRoute.createTransactions.name,
+        builder: (context, state) => CreateTransactionScreen(),
       ),
     ],
   );

@@ -3,12 +3,15 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:we_budget/core/constants/constants.dart';
 import 'package:we_budget/core/routes/app_route.dart';
 import 'package:we_budget/core/widgets/custom_snack_bar.dart';
 import 'package:we_budget/features/budgets/controller/budget_controller.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
 import 'package:we_budget/features/budgets/presentations/budget_glance.dart';
 import 'package:we_budget/features/budgets/presentations/widgets/add_budget_bottom_sheet.dart';
+import 'package:we_budget/features/home/controller/home_controller.dart';
+import 'package:we_budget/features/transactions/presentations/transactions_glance_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   HomeScreen({super.key});
@@ -48,7 +51,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final budgets = ref.watch(budgetListProvider);
+    final record = ref.watch(homeRecordProvider);
     final theme = Theme.of(context);
     ref.listen(budgetControllerProvider, (prev, next) {
       next.whenOrNull(
@@ -84,18 +87,17 @@ class HomeScreen extends ConsumerWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 10, left: 8, right: 8),
-            child: budgets.when(
+            child: record.when(
               data: (data) {
-                if (data?.isEmpty ?? true) {
+                if (data.$1?.isEmpty ?? true) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ClipRect(
                         clipBehavior: Clip.hardEdge,
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          heightFactor: 0.5,
-                          widthFactor: 0.55,
+                        child: Transform.scale(
+                          alignment: AlignmentGeometry.xy(-1, -1.2),
+                          scale: 1.9,
                           child: Image.asset('lib/assets/piggy-bank.png'),
                         ),
                       ),
@@ -123,7 +125,7 @@ class HomeScreen extends ConsumerWidget {
                           style: theme.textTheme.bodyLarge,
                         ),
                         Text(
-                          "Rp. 1.000.000",
+                          'Rp. ${Constants.formatThousandFromInt(1000000)}',
                           style: theme.textTheme.displayMedium,
                         ),
                         Gap(12),
@@ -132,11 +134,37 @@ class HomeScreen extends ConsumerWidget {
                             onPageChanged: (value) =>
                                 ref.read(pageProvider.notifier).state = value,
                             children: [
-                              BudgetGlance(data!),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Placeholder(),
-                              ),
+                              BudgetGlance(data.$1!),
+                              data.$2?.isEmpty ?? true
+                                  ? Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Center(
+                                        child: Column(
+                                          children: [
+                                            ClipRect(
+                                              clipBehavior: Clip.hardEdge,
+                                              child: Transform.scale(
+                                                scale: 2.1,
+                                                alignment: AlignmentGeometry.xy(
+                                                  -1.0,
+                                                  0.7,
+                                                ),
+                                                child: Image.asset(
+                                                  fit: BoxFit.cover,
+                                                  'lib/assets/piggy-bank.png',
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              "Oh? No transactions? Let's save that money!",
+                                              style: theme.textTheme.titleLarge,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  : TransactionGlance(data.$2!),
+                              // TransactionGlance(data.$2!),
                             ],
                           ),
                         ),
@@ -153,7 +181,9 @@ class HomeScreen extends ConsumerWidget {
                               child: Icon(Icons.add),
                               onPressed: () => page == 0
                                   ? createBudget(ref, context)
-                                  : print("expense"),
+                                  : context.pushNamed(
+                                      AppRoute.createTransactions.name,
+                                    ),
                             );
                           },
                         ),
