@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:we_budget/core/constants/constants.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
 import 'package:we_budget/features/budgets/presentations/budget_detail.dart';
 
@@ -16,7 +17,10 @@ class BudgetGlance extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text("Budgets"), Text("See all")],
+          children: [
+            Text("Budgets"),
+            TextButton(onPressed: () {}, child: Text("See all")),
+          ],
         ),
         Gap(12),
         Flexible(
@@ -32,7 +36,9 @@ class BudgetGlance extends StatelessWidget {
                   child: ListTile(
                     title: Text(budgets[index].name),
                     subtitle: Text(budgets[index].description ?? ""),
-                    trailing: Text("Rp. ${budgets[index].totalAmount}"),
+                    trailing: Text(
+                      "Rp. ${Constants.formatThousandFromInt(budgets[index].totalAmount)}",
+                    ),
                   ),
                 ),
               ),

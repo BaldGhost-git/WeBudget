@@ -179,7 +179,7 @@ final budgetListProvider =
     );
 
 typedef _$BudgetList = AutoDisposeAsyncNotifier<List<Budget>?>;
-String _$budgetControllerHash() => r'07fcb907a6060467dcb8a92dfee0ff4d25893b5f';
+String _$budgetControllerHash() => r'e697a611ae0789da7a712d79799507258469275d';
 
 /// See also [BudgetController].
 @ProviderFor(BudgetController)

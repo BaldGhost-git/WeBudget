@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
+import 'package:we_budget/core/constants/constants.dart';
 import 'package:we_budget/features/budgets/controller/budget_controller.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
 import 'package:we_budget/features/budgets/presentations/widgets/add_budget_bottom_sheet.dart';
@@ -104,7 +104,7 @@ class BudgetDetail extends ConsumerWidget {
             Text("Your remaining budget is Rp. xxxx"),
             Text("${data.daysBeforeReset} days left before budget resets"),
             Text(
-              "Your budget will resetted in ${DateFormat('d MMM y').format(data.resetDate)}",
+              "Your budget will resetted in ${Constants.dateFormat.format(data.resetDate)}",
             ),
             FilledButton(
               onPressed: () async => await updateBudget(ref, context, data),

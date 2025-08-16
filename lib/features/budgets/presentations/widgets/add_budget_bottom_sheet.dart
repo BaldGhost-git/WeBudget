@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
-import 'package:intl/intl.dart';
+import 'package:we_budget/core/constants/constants.dart';
+import 'package:we_budget/core/widgets/custom_input_decorator.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
 
 class AddBudgetBottomSheet extends StatefulWidget {
@@ -25,7 +27,6 @@ class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
   final double horizontalDimens = 5;
   final double verticalDimens = 5;
   DateTime? _selectedDate;
-  final DateFormat dateFormat = DateFormat('dd MMM y');
 
   @override
   void initState() {
@@ -62,10 +63,10 @@ class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
               children: [
                 Text('New Budget', style: theme.textTheme.titleLarge),
                 FilledButton.icon(
-                  onPressed: formState?.validate() ?? false
-                      ? widget.onSubmit
-                      : null,
-                  label: const Text('Add'),
+                  onPressed: widget.onSubmit,
+                  label: widget.budget == null
+                      ? const Text('Add')
+                      : const Text('Update'),
                   icon: const Icon(Icons.add),
                 ),
               ],
@@ -73,84 +74,72 @@ class _AddBudgetBottomSheetState extends State<AddBudgetBottomSheet> {
             const Gap(8),
             FormBuilderTextField(
               name: 'name',
-              validator: (value) {
-                if (value?.trim().isEmpty ?? true) {
-                  return "Insert your budget name";
-                }
-                return null;
-              },
+              validator: FormBuilderValidators.required(
+                errorText: "Insert your budget name",
+              ),
               initialValue: widget.budget?.name,
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
+              decoration: customInputDecoration(
                 labelText: 'Budget Name',
                 hintText: 'Food',
-                border: OutlineInputBorder(),
               ),
             ),
             const Gap(12),
             FormBuilderTextField(
               name: 'total_amount',
-              validator: (value) {
-                if (value?.trim().isEmpty ?? true) {
-                  return "Insert your budget amount";
-                }
-                if (int.tryParse(value!) == null || int.tryParse(value)! <= 0) {
-                  return "Insert the correct amount";
-                }
-                return null;
-              },
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(
+                  errorText: "Insert your budget amount",
+                ),
+                FormBuilderValidators.numeric(
+                  errorText: "Insert the correct amount",
+                ),
+              ]),
               initialValue: widget.budget?.totalAmount.toString(),
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
+              inputFormatters: [ThousandsSeparatorInputFormatter()],
+              decoration: customInputDecoration(
                 labelText: 'Budget Amount',
-                hintText: 'Rp. 500000',
-                border: OutlineInputBorder(),
+                hintText: '500.000',
               ),
             ),
             const Gap(12),
             FormBuilderDateTimePicker(
               initialValue: initialDate,
               inputType: InputType.date,
-              format: dateFormat,
+              format: Constants.dateFormat,
               name: 'start_date',
               firstDate: DateTime(2000),
               lastDate: DateTime(2040),
-              decoration: const InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                labelText: 'Start Date',
-                border: OutlineInputBorder(),
-              ),
+              decoration: customInputDecoration(labelText: 'Start Date'),
             ),
             const Gap(12),
             FormBuilderTextField(
               name: 'reset_days',
+              keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.done,
               initialValue: widget.budget?.resetDay.toString(),
-              decoration: const InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
+              decoration: customInputDecoration(
                 labelText: 'Reset Days',
                 hintText: '30',
-                border: OutlineInputBorder(),
               ),
-              validator: (value) {
-                if (value?.trim().isEmpty ?? true) {
-                  return "Insert the number of days to reset";
-                }
-                if (int.tryParse(value!) == null || int.tryParse(value)! <= 0) {
-                  return "Insert the valid number of days";
-                }
-                return null;
-              },
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(
+                  errorText: "Insert the number of days to reset",
+                ),
+                FormBuilderValidators.numeric(
+                  errorText: "Insert the valid number of days",
+                ),
+              ]),
             ),
             const Gap(12),
             if (formState?.instantValue["start_date"] != null &&
                 formState?.instantValue["reset_days"] != null) ...[
               Text("Your budget will be resetted in"),
               Text(
-                dateFormat.format(
+                Constants.dateFormat.format(
                   (formState?.instantValue["start_date"] as DateTime).add(
                     Duration(
                       days: int.parse(
