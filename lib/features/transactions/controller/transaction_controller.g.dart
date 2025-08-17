@@ -186,7 +186,7 @@ final transactionListProvider =
 
 typedef _$TransactionList = AutoDisposeAsyncNotifier<List<Transaction>?>;
 String _$transactionControllerHash() =>
-    r'295dae85fd09cab266fe354a0004dbccfaf1d63c';
+    r'e76e63ed26f6539f58d31c198d1c176ba6c1ba7f';
 
 /// See also [TransactionController].
 @ProviderFor(TransactionController)

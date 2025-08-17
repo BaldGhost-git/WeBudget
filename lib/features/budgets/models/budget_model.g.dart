@@ -13,6 +13,7 @@ Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
   resetDay: (json['reset_day'] as num?)?.toInt() ?? 30,
   startDate: DateTime.parse(json['start_date'] as String),
   status: json['status'] as bool? ?? true,
+  isDailySpend: json['is_daily_spend'] as bool,
   totalAmount: (json['total_amount'] as num).toInt(),
   createdAt: DateTime.parse(json['created_at'] as String),
   modifiedAt: json['modified_at'] == null
@@ -27,6 +28,7 @@ Map<String, dynamic> _$BudgetToJson(Budget instance) => <String, dynamic>{
   if (instance.resetDay case final value?) 'reset_day': value,
   'start_date': instance.startDate.toIso8601String(),
   'status': instance.status,
+  'is_daily_spend': instance.isDailySpend,
   'total_amount': instance.totalAmount,
   'created_at': instance.createdAt.toIso8601String(),
   if (instance.modifiedAt?.toIso8601String() case final value?)

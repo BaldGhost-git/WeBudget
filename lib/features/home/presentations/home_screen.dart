@@ -8,10 +8,8 @@ import 'package:we_budget/core/routes/app_route.dart';
 import 'package:we_budget/core/widgets/custom_snack_bar.dart';
 import 'package:we_budget/features/budgets/controller/budget_controller.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
-import 'package:we_budget/features/budgets/presentations/budget_glance.dart';
-import 'package:we_budget/features/budgets/presentations/widgets/add_budget_bottom_sheet.dart';
 import 'package:we_budget/features/home/controller/home_controller.dart';
-import 'package:we_budget/features/transactions/presentations/transactions_glance_screen.dart';
+import 'package:we_budget/features/home/presentations/home_page_view.dart';
 
 class HomeScreen extends ConsumerWidget {
   HomeScreen({super.key});
@@ -19,18 +17,19 @@ class HomeScreen extends ConsumerWidget {
   static const String path = "/home";
   final formKey = GlobalKey<FormBuilderState>();
 
-  Future<void> createBudget(WidgetRef ref, BuildContext context) async {
-    await showModalBottomSheet<Budget?>(
-      context: context,
-      builder: (context) => AddBudgetBottomSheet(
-        formKey,
-        onSubmit: () {
+  void createBudget(WidgetRef ref, BuildContext context) {
+    context.pushNamed(
+      AppRoute.createBudget.name,
+      extra: <String, dynamic>{
+        'formKey': formKey,
+        'onSubmit': () {
           if (formKey.currentState?.saveAndValidate() ?? false) {
             var {
               'start_date': startDate,
               'name': name,
               'total_amount': totalAmount,
               'reset_days': resetDays,
+              'is_daily_spend': isDailySpend,
             } = formKey.currentState!.value;
             final budgetItem = Budget(
               startDate: startDate as DateTime,
@@ -38,6 +37,7 @@ class HomeScreen extends ConsumerWidget {
               totalAmount: int.parse(totalAmount as String),
               createdAt: DateTime.now(),
               resetDay: int.tryParse(resetDays as String),
+              isDailySpend: isDailySpend as bool,
             );
             ref
                 .read(budgetControllerProvider.notifier)
@@ -45,7 +45,7 @@ class HomeScreen extends ConsumerWidget {
             context.pop();
           }
         },
-      ),
+      },
     );
   }
 
@@ -53,6 +53,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final record = ref.watch(homeRecordProvider);
     final theme = Theme.of(context);
+
     ref.listen(budgetControllerProvider, (prev, next) {
       next.whenOrNull(
         data: (msg) {
@@ -73,9 +74,14 @@ class HomeScreen extends ConsumerWidget {
         ),
       );
     });
+
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('My Budget'),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text('WeBudget'),
         actions: [
           IconButton(
             onPressed: () => context.pushNamed(AppRoute.settings.name),
@@ -83,92 +89,57 @@ class HomeScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10, left: 8, right: 8),
-            child: record.when(
-              data: (data) {
-                if (data.$1?.isEmpty ?? true) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ClipRect(
-                        clipBehavior: Clip.hardEdge,
-                        child: Transform.scale(
-                          alignment: AlignmentGeometry.xy(-1, -1.2),
-                          scale: 1.9,
-                          child: Image.asset('lib/assets/piggy-bank.png'),
-                        ),
-                      ),
-                      Text(
-                        "Oops! Looks like you don't have any budget",
-                        style: theme.textTheme.titleLarge,
-                      ),
-                      Gap(12),
-                      FilledButton.icon(
-                        onPressed: () => createBudget(ref, context),
-                        icon: Icon(Icons.add),
-                        label: Text("Add new budget here!"),
-                      ),
-                    ],
-                  );
-                }
+      body: record.when(
+        data: (data) {
+          if (data.$1?.isEmpty ?? true) {
+            EmptyBudget(theme, ref);
+          }
+          return SafeArea(
+            bottom: true,
+            top: false,
+            child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                final topContainerHeight = constraints.maxHeight * 0.26;
                 return Stack(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Hi There!'),
-                        Text(
-                          'Today, you can spend a total of',
-                          style: theme.textTheme.bodyLarge,
+                    Container(
+                      height: topContainerHeight,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
                         ),
-                        Text(
-                          'Rp. ${Constants.formatThousandFromInt(1000000)}',
-                          style: theme.textTheme.displayMedium,
-                        ),
-                        Gap(12),
-                        Flexible(
-                          child: PageView(
-                            onPageChanged: (value) =>
-                                ref.read(pageProvider.notifier).state = value,
-                            children: [
-                              BudgetGlance(data.$1!),
-                              data.$2?.isEmpty ?? true
-                                  ? Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Center(
-                                        child: Column(
-                                          children: [
-                                            ClipRect(
-                                              clipBehavior: Clip.hardEdge,
-                                              child: Transform.scale(
-                                                scale: 2.1,
-                                                alignment: AlignmentGeometry.xy(
-                                                  -1.0,
-                                                  0.7,
-                                                ),
-                                                child: Image.asset(
-                                                  fit: BoxFit.cover,
-                                                  'lib/assets/piggy-bank.png',
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              "Oh? No transactions? Let's save that money!",
-                                              style: theme.textTheme.titleLarge,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  : TransactionGlance(data.$2!),
-                              // TransactionGlance(data.$2!),
-                            ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: (constraints.maxWidth * 0.05) / 2,
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: topContainerHeight,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Gap(constraints.maxHeight * 0.10),
+                                Text('Hi There!'),
+                                Text(
+                                  'Today, you can spend a total of',
+                                  style: theme.textTheme.bodyLarge,
+                                ),
+                                Text(
+                                  'Rp. ${Constants.formatThousandFromInt(1000000)}',
+                                  style: theme.textTheme.displayMedium,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                          Gap(10),
+                          Expanded(child: HomePageView(data)),
+                        ],
+                      ),
                     ),
                     Align(
                       alignment: Alignment.bottomRight,
@@ -192,10 +163,46 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 );
               },
-              error: (error, st) => Text("Error happen, $error"),
-              loading: () => CircularProgressIndicator(),
             ),
-          ),
+          );
+        },
+        error: (error, st) => Text("Error happen, $error"),
+        loading: () => Center(child: CircularProgressIndicator()),
+      ),
+    );
+  }
+
+  Widget EmptyBudget(ThemeData theme, WidgetRef ref) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) => Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: (constraints.maxWidth * 0.05) / 2,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: constraints.maxHeight * 0.35,
+              child: ClipRect(
+                clipBehavior: Clip.hardEdge,
+                child: Transform.scale(
+                  alignment: AlignmentGeometry.xy(-1, -1.2),
+                  scale: 1.9,
+                  child: Image.asset('lib/assets/piggy-bank.png'),
+                ),
+              ),
+            ),
+            Text(
+              "Oops! Looks like you don't have any budget",
+              style: theme.textTheme.titleLarge,
+            ),
+            Gap(12),
+            FilledButton.icon(
+              onPressed: () => createBudget(ref, context),
+              icon: Icon(Icons.add),
+              label: Text("Add new budget here!"),
+            ),
+          ],
         ),
       ),
     );

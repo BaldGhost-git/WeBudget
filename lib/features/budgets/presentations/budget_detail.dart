@@ -3,9 +3,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:we_budget/core/constants/constants.dart';
+import 'package:we_budget/core/routes/app_route.dart';
 import 'package:we_budget/features/budgets/controller/budget_controller.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
-import 'package:we_budget/features/budgets/presentations/widgets/add_budget_bottom_sheet.dart';
+import 'package:we_budget/features/budgets/presentations/upsert_budget_screen.dart';
 
 class BudgetDetail extends ConsumerWidget {
   BudgetDetail({super.key, required this.budgetId});
@@ -14,17 +15,12 @@ class BudgetDetail extends ConsumerWidget {
   final int budgetId;
   final formKey = GlobalKey<FormBuilderState>();
 
-  Future<void> updateBudget(
-    WidgetRef ref,
-    BuildContext context,
-    Budget oldBudget,
-  ) async {
-    await showModalBottomSheet<Budget?>(
-      useSafeArea: true,
-      context: context,
-      builder: (context) => AddBudgetBottomSheet(
-        formKey,
-        onSubmit: () {
+  void updateBudget(WidgetRef ref, BuildContext context, Budget oldBudget) {
+    context.goNamed(
+      AppRoute.createBudget.name,
+      extra: <String, dynamic>{
+        'formKey': formKey,
+        'onSubmit': () {
           if (formKey.currentState?.saveAndValidate() ?? false) {
             var {
               'start_date': startDate,
@@ -43,8 +39,8 @@ class BudgetDetail extends ConsumerWidget {
             context.pop();
           }
         },
-        budget: oldBudget,
-      ),
+        'budget': oldBudget,
+      },
     );
   }
 
@@ -107,7 +103,7 @@ class BudgetDetail extends ConsumerWidget {
               "Your budget will resetted in ${Constants.dateFormat.format(data.resetDate)}",
             ),
             FilledButton(
-              onPressed: () async => await updateBudget(ref, context, data),
+              onPressed: () => updateBudget(ref, context, data),
               child: Text("Update"),
             ),
           ],

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:we_budget/features/auth/controllers/auth_controller.dart';
 import 'package:we_budget/features/auth/presentations/login_screen.dart';
+import 'package:we_budget/features/budgets/presentations/upsert_budget_screen.dart';
 import 'package:we_budget/features/budgets/presentations/budget_detail.dart';
 import 'package:we_budget/features/home/presentations/home_screen.dart';
 import 'package:we_budget/features/settings/presentations/settings_screen.dart';
@@ -10,7 +11,15 @@ import 'package:we_budget/features/transactions/presentations/transactions_creat
 
 part 'app_route.g.dart';
 
-enum AppRoute { auth, home, budget, transactions, createTransactions, settings }
+enum AppRoute {
+  auth,
+  home,
+  budget,
+  createBudget,
+  transactions,
+  createTransactions,
+  settings,
+}
 
 @Riverpod(keepAlive: true)
 GoRouter getRoutes(Ref ref) {
@@ -27,6 +36,18 @@ GoRouter getRoutes(Ref ref) {
         path: HomeScreen.path,
         name: AppRoute.home.name,
         builder: (context, state) => HomeScreen(),
+      ),
+      GoRoute(
+        path: UpsertBudgetScreen.path,
+        name: AppRoute.createBudget.name,
+        builder: (context, state) {
+          final extras = state.extra! as Map<String, dynamic>;
+          return UpsertBudgetScreen(
+            extras['formKey'],
+            onSubmit: extras['onSubmit'],
+            budget: extras['budget'],
+          );
+        },
       ),
       GoRoute(
         path: "${BudgetDetail.path}/:budgetId",

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:we_budget/core/constants/constants.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
@@ -12,40 +11,22 @@ class BudgetGlance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Budgets"),
-            TextButton(onPressed: () {}, child: Text("See all")),
-          ],
-        ),
-        Gap(12),
-        Flexible(
-          child: ListView.builder(
-            itemCount: budgets.length,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Card(
-                child: InkWell(
-                  onTap: () => context.push(
-                    "${BudgetDetail.path}/${budgets[index].budgetId}",
-                  ),
-                  child: ListTile(
-                    title: Text(budgets[index].name),
-                    subtitle: Text(budgets[index].description ?? ""),
-                    trailing: Text(
-                      "Rp. ${Constants.formatThousandFromInt(budgets[index].totalAmount)}",
-                    ),
-                  ),
-                ),
-              ),
+    return ListView.builder(
+      padding: EdgeInsets.zero,
+      itemCount: budgets.length,
+      itemBuilder: (context, index) => Card(
+        child: InkWell(
+          onTap: () =>
+              context.push("${BudgetDetail.path}/${budgets[index].budgetId}"),
+          child: ListTile(
+            title: Text(budgets[index].name),
+            subtitle: Text(budgets[index].description ?? ""),
+            trailing: Text(
+              "Rp. ${Constants.formatThousandFromInt(budgets[index].totalAmount)}",
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

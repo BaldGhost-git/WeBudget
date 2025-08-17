@@ -15,6 +15,8 @@ class Budget with _$Budget {
   @JsonKey(name: "start_date")
   final DateTime startDate;
   final bool status;
+  @JsonKey(name: "is_daily_spend")
+  final bool isDailySpend;
   @JsonKey(name: "total_amount")
   final int totalAmount;
   @JsonKey(name: "created_at")
@@ -29,6 +31,7 @@ class Budget with _$Budget {
     this.resetDay = 30,
     required this.startDate,
     this.status = true,
+    required this.isDailySpend,
     required this.totalAmount,
     required this.createdAt,
     this.modifiedAt,

@@ -8,15 +8,20 @@ import 'package:we_budget/features/transactions/model/transaction_model.dart';
 part 'home_controller.g.dart';
 
 @riverpod
-Future<(List<Budget>?, List<Transaction>?)> homeRecord(Ref ref) async {
+AsyncValue<(List<Budget>?, List<Transaction>?)> homeRecord(Ref ref) {
   final budgetAsync = ref.watch(budgetListProvider);
   final txAsync = ref.watch(transactionListProvider);
 
   if (budgetAsync.isLoading || txAsync.isLoading) {
-    throw const AsyncLoading();
+    return const AsyncLoading();
   }
-  if (budgetAsync.hasError) throw budgetAsync.error!;
-  if (txAsync.hasError) throw txAsync.error!;
 
-  return (budgetAsync.value, txAsync.value);
+  if (budgetAsync.hasError) {
+    return AsyncError(budgetAsync.error!, budgetAsync.stackTrace!);
+  }
+  if (txAsync.hasError) {
+    return AsyncError(txAsync.error!, txAsync.stackTrace!);
+  }
+
+  return AsyncData((budgetAsync.value, txAsync.value));
 }

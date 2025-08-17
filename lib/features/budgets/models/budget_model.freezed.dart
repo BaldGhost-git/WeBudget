@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Budget {
 
- int? get budgetId; String get name; String? get description; int? get resetDay; DateTime get startDate; bool get status; int get totalAmount; DateTime get createdAt; DateTime? get modifiedAt;
+ int? get budgetId; String get name; String? get description; int? get resetDay; DateTime get startDate; bool get status; bool get isDailySpend; int get totalAmount; DateTime get createdAt; DateTime? get modifiedAt;
 /// Create a copy of Budget
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $BudgetCopyWith<Budget> get copyWith => _$BudgetCopyWithImpl<Budget>(this as Bud
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Budget&&(identical(other.budgetId, budgetId) || other.budgetId == budgetId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.resetDay, resetDay) || other.resetDay == resetDay)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.status, status) || other.status == status)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Budget&&(identical(other.budgetId, budgetId) || other.budgetId == budgetId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.resetDay, resetDay) || other.resetDay == resetDay)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.status, status) || other.status == status)&&(identical(other.isDailySpend, isDailySpend) || other.isDailySpend == isDailySpend)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,budgetId,name,description,resetDay,startDate,status,totalAmount,createdAt,modifiedAt);
+int get hashCode => Object.hash(runtimeType,budgetId,name,description,resetDay,startDate,status,isDailySpend,totalAmount,createdAt,modifiedAt);
 
 @override
 String toString() {
-  return 'Budget(budgetId: $budgetId, name: $name, description: $description, resetDay: $resetDay, startDate: $startDate, status: $status, totalAmount: $totalAmount, createdAt: $createdAt, modifiedAt: $modifiedAt)';
+  return 'Budget(budgetId: $budgetId, name: $name, description: $description, resetDay: $resetDay, startDate: $startDate, status: $status, isDailySpend: $isDailySpend, totalAmount: $totalAmount, createdAt: $createdAt, modifiedAt: $modifiedAt)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $BudgetCopyWith<$Res>  {
   factory $BudgetCopyWith(Budget value, $Res Function(Budget) _then) = _$BudgetCopyWithImpl;
 @useResult
 $Res call({
- int? budgetId, String name, String? description, int? resetDay, DateTime startDate, bool status, int totalAmount, DateTime createdAt, DateTime? modifiedAt
+ int? budgetId, String name, String? description, int? resetDay, DateTime startDate, bool status, bool isDailySpend, int totalAmount, DateTime createdAt, DateTime? modifiedAt
 });
 
 
@@ -63,7 +63,7 @@ class _$BudgetCopyWithImpl<$Res>
 
 /// Create a copy of Budget
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? budgetId = freezed,Object? name = null,Object? description = freezed,Object? resetDay = freezed,Object? startDate = null,Object? status = null,Object? totalAmount = null,Object? createdAt = null,Object? modifiedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? budgetId = freezed,Object? name = null,Object? description = freezed,Object? resetDay = freezed,Object? startDate = null,Object? status = null,Object? isDailySpend = null,Object? totalAmount = null,Object? createdAt = null,Object? modifiedAt = freezed,}) {
   return _then(Budget(
 budgetId: freezed == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
 as int?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -71,6 +71,7 @@ as String,description: freezed == description ? _self.description : description 
 as String?,resetDay: freezed == resetDay ? _self.resetDay : resetDay // ignore: cast_nullable_to_non_nullable
 as int?,startDate: null == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
 as DateTime,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as bool,isDailySpend: null == isDailySpend ? _self.isDailySpend : isDailySpend // ignore: cast_nullable_to_non_nullable
 as bool,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
 as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime,modifiedAt: freezed == modifiedAt ? _self.modifiedAt : modifiedAt // ignore: cast_nullable_to_non_nullable
