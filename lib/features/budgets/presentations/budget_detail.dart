@@ -52,6 +52,7 @@ class _BudgetDetailState extends ConsumerState<BudgetDetail> {
             var {
               'start_date': startDate,
               'name': name,
+              'description': description,
               'total_amount': totalAmount,
               'reset_days': resetDays,
               'is_daily_spend': isDailySpend,
@@ -59,6 +60,7 @@ class _BudgetDetailState extends ConsumerState<BudgetDetail> {
             final newBudget = oldBudget.copyWith(
               startDate: startDate as DateTime,
               name: name as String,
+              description: description as String?,
               totalAmount: int.parse(totalAmount as String),
               modifiedAt: DateTime.now(),
               resetDay: resetDays as int?,
@@ -171,6 +173,8 @@ class _BudgetDetailState extends ConsumerState<BudgetDetail> {
                                 Text(data.name, style: TextStyle(fontSize: 24)),
                                 if (data.description?.isNotEmpty ?? false)
                                   Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     data.description!,
                                     style: TextStyle(fontSize: 14),
                                   ),

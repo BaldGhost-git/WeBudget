@@ -88,6 +88,18 @@ class _UpsertBudgetScreenState extends State<UpsertBudgetScreen> {
                 const Gap(16),
                 FormBuilderTextField(
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                  name: 'description',
+                  initialValue: widget.budget?.description,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.next,
+                  decoration: customInputDecoration(
+                    labelText: 'Description',
+                    hintText: 'Describe it',
+                  ),
+                ),
+                const Gap(16),
+                FormBuilderTextField(
+                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   name: 'total_amount',
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
