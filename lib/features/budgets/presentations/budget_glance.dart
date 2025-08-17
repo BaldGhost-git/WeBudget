@@ -9,24 +9,50 @@ class BudgetGlance extends StatelessWidget {
 
   final List<Budget> budgets;
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      itemCount: budgets.length,
-      itemBuilder: (context, index) => Card(
-        child: InkWell(
-          onTap: () =>
-              context.push("${BudgetDetail.path}/${budgets[index].budgetId}"),
-          child: ListTile(
-            title: Text(budgets[index].name),
-            subtitle: Text(budgets[index].description ?? ""),
-            trailing: Text(
-              "Rp. ${Constants.formatThousandFromInt(budgets[index].totalAmount)}",
+  List<Budget> get getDailyBudgets =>
+      budgets.where((budget) => budget.isDailySpend).toList();
+  List<Budget> get getPlannedBudgets =>
+      budgets.where((budget) => !budget.isDailySpend).toList();
+
+  List<Widget> displayBudgets(
+    BuildContext context,
+    List<Budget> budget,
+    String title,
+  ) {
+    return [
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 18),
+        child: Text(title, style: TextStyle(color: Colors.grey.shade500)),
+      ),
+      ...List.generate(
+        budget.length,
+        (index) => Card(
+          child: InkWell(
+            onTap: () =>
+                context.push("${BudgetDetail.path}/${budget[index].budgetId}"),
+            child: ListTile(
+              title: Text(budget[index].name),
+              subtitle: Text(budget[index].description ?? ""),
+              trailing: Text(
+                "Rp. ${Constants.formatThousandFromInt(budget[index].totalAmount)}",
+              ),
             ),
           ),
         ),
       ),
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        if (getDailyBudgets.isNotEmpty)
+          ...displayBudgets(context, getDailyBudgets, "Daily"),
+        if (getPlannedBudgets.isNotEmpty)
+          ...displayBudgets(context, getPlannedBudgets, "Planned"),
+      ],
     );
   }
 }
