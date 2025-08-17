@@ -145,8 +145,10 @@ class _UpsertBudgetScreenState extends State<UpsertBudgetScreen> {
                     title: Text("Include in daily spending?"),
                     trailing: Switch(
                       value: isDailySpend,
-                      onChanged: (value) =>
-                          setState(() => isDailySpend = value),
+                      onChanged: (value) => setState(() {
+                        field.didChange(value);
+                        isDailySpend = value;
+                      }),
                     ),
                   ),
                 ),
