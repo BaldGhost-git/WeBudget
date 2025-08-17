@@ -27,6 +27,7 @@ class HomeScreen extends ConsumerWidget {
             var {
               'start_date': startDate,
               'name': name,
+              'description': description,
               'total_amount': totalAmount,
               'reset_days': resetDays,
               'is_daily_spend': isDailySpend,
@@ -34,6 +35,7 @@ class HomeScreen extends ConsumerWidget {
             final budgetItem = Budget(
               startDate: startDate as DateTime,
               name: name as String,
+              description: description as String?,
               totalAmount: int.parse(totalAmount as String),
               createdAt: DateTime.now(),
               resetDay: int.tryParse(resetDays as String),
@@ -92,7 +94,7 @@ class HomeScreen extends ConsumerWidget {
       body: record.when(
         data: (data) {
           if (data.$1?.isEmpty ?? true) {
-            EmptyBudget(theme, ref);
+            return EmptyBudget(theme, ref);
           }
           return SafeArea(
             bottom: true,
