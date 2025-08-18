@@ -1,52 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:we_budget/core/constants/constants.dart';
-import 'package:we_budget/features/budgets/presentations/budget_detail.dart';
 import 'package:we_budget/features/transactions/model/transaction_model.dart';
 
 class TransactionGlance extends StatelessWidget {
-  const TransactionGlance(this.trx, {super.key});
+  const TransactionGlance(this.transactions, {super.key});
 
-  final List<Transaction> trx;
+  final List<Transaction> transactions;
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Expenses"),
-            TextButton(onPressed: () {}, child: Text("See all")),
-          ],
-        ),
-        Gap(12),
-        Flexible(
-          child: ListView.builder(
-            itemCount: trx.length,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Card(
-                child: InkWell(
-                  // onTap: () => context.push(
-                  //   "${BudgetDetail.path}/${trx[index].budgetId}",
-                  // ),
-                  child: ListTile(
-                    title: Text(trx[index].description),
-                    subtitle: Text(
-                      Constants.dateFormat.format(trx[index].trxDate),
-                    ),
-                    trailing: Text(
-                      "Rp. ${Constants.formatThousandFromInt(trx[index].amount)}",
-                    ),
-                  ),
-                ),
+  List<Transaction> get getCurrentMonthTrx => transactions
+      .where((trx) => trx.trxDate.month == DateTime.now().month)
+      .toList();
+  List<Transaction> get getPreviousMonthTrx => transactions
+      .where((trx) => trx.trxDate.month < DateTime.now().month)
+      .toList();
+
+  List<Widget> displayTransactions(
+    BuildContext context,
+    List<Transaction> transactionList,
+    String title,
+  ) {
+    return [
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 18),
+        child: Text(title, style: TextStyle(color: Colors.grey.shade500)),
+      ),
+      ...List.generate(
+        transactionList.length,
+        (index) => Card(
+          child: InkWell(
+            // onTap: () =>
+            //     context.push("${BudgetDetail.path}/${transactionList[index].budgetId}"),
+            child: ListTile(
+              title: Text(transactionList[index].description),
+              subtitle: Text(
+                Constants.dateFormat.format(transactionList[index].trxDate),
+              ),
+              trailing: Text(
+                "Rp. ${Constants.formatThousandFromInt(transactionList[index].amount)}",
               ),
             ),
           ),
         ),
+      ),
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        if (getCurrentMonthTrx.isNotEmpty)
+          ...displayTransactions(context, getCurrentMonthTrx, "This Month"),
+        if (getPreviousMonthTrx.isNotEmpty)
+          ...displayTransactions(
+            context,
+            getPreviousMonthTrx,
+            "Previous Month",
+          ),
       ],
     );
   }
