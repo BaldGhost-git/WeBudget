@@ -9,7 +9,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<AppUser?> getUser(String email) async {
-    final row = await client.from('Users').select().eq('email', email).limit(1);
+    final row = await client.from('Users').select();
     if (row.isEmpty) return null;
     return AppUser.fromJson(row[0]);
   }

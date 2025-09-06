@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:we_budget/features/auth/controllers/auth_controller.dart';
+import 'package:we_budget/features/auth/controllers/user_controller.dart';
 import 'package:we_budget/features/auth/presentations/login_screen.dart';
 import 'package:we_budget/features/budgets/presentations/upsert_budget_screen.dart';
 import 'package:we_budget/features/budgets/presentations/budget_detail.dart';
@@ -24,6 +25,7 @@ enum AppRoute {
 @Riverpod(keepAlive: true)
 GoRouter getRoutes(Ref ref) {
   final user = ref.watch(authControllerProvider);
+  final appUser = ref.watch(userControllerProvider); //watch here to keep alive
   return GoRouter(
     initialLocation: user == null ? AuthScreen.path : HomeScreen.path,
     routes: [

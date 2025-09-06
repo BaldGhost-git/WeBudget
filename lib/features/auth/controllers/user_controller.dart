@@ -8,18 +8,17 @@ import 'package:we_budget/features/auth/models/user_model.dart';
 
 part 'user_controller.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class UserController extends _$UserController {
-  late final UserRepository userRepository;
   @override
   Future<AppUser?> build() async {
-    userRepository = ref.read(userRepositoryProvider);
     final user = ref.watch(authControllerProvider);
     if (user == null) return null;
     return getUser(user.email!);
   }
 
   Future<AppUser?> getUser(String email) async {
+    final userRepository = ref.read(userRepositoryProvider);
     state = AsyncValue.loading();
     state = await AsyncValue.guard(() => userRepository.getUser(email));
     return userRepository.getUser(email);

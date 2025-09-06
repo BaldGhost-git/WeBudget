@@ -144,7 +144,7 @@ class _BudgetDetailState extends ConsumerState<BudgetDetail> {
           bottom: true,
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final topContainerHeight = constraints.maxHeight * 0.4;
+              final topContainerHeight = constraints.maxHeight * 0.44;
               return Stack(
                 children: [
                   Container(
