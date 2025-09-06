@@ -30,6 +30,7 @@ dev_dependencies:
   riverpod_generator: ^2.6.5
   build_runner: ^2.5.4
   envied_generator: ^1.1.1
+  husky: ^0.1.7
 
 flutter:
   uses-material-design: true
