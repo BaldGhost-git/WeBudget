@@ -9,7 +9,6 @@ import 'package:we_budget/core/widgets/custom_snack_bar.dart';
 import 'package:we_budget/features/budgets/controller/budget_controller.dart';
 import 'package:we_budget/features/transactions/controller/amount_text.dart';
 import 'package:we_budget/features/transactions/controller/transaction_controller.dart';
-import 'package:we_budget/features/transactions/model/transaction_model.dart';
 import 'package:we_budget/features/transactions/widgets/calculator_pads.dart';
 
 class CreateTransactionScreen extends ConsumerStatefulWidget {
@@ -63,11 +62,11 @@ class _CreateTransactionScreenState
               if (!((formKey.currentState?.saveAndValidate()) ?? false)) {
                 return;
               }
-              if (calculatePriceText == '0') return;
+              if (calculatePriceText.amount == '0') return;
               final newTransaction = {
                 'amount': calculatePriceText.amount,
                 'budget_id': formKey.currentState!.value['budget_id'],
-                'description': 'new transaction',
+                'description': formKey.currentState!.value['description'],
                 'trx_date': DateTime.now(),
               };
               ref
@@ -84,7 +83,7 @@ class _CreateTransactionScreenState
         top: false,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final topContainerHeight = constraints.maxHeight * 0.4;
+            final topContainerHeight = constraints.maxHeight * 0.43;
             return Stack(
               children: [
                 Container(height: topContainerHeight, color: Colors.grey[300]),
@@ -101,6 +100,29 @@ class _CreateTransactionScreenState
                           child: Column(
                             children: [
                               Gap(constraints.maxHeight * 0.12),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Flexible(
+                                    child: FittedBox(
+                                      child: ListenableBuilder(
+                                        listenable: calculatePriceText,
+                                        builder:
+                                            (
+                                              BuildContext context,
+                                              Widget? child,
+                                            ) => Text(
+                                              calculatePriceText.amount,
+                                              style: TextStyle(fontSize: 80),
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Gap(12),
+                                  Text("IDR", style: TextStyle(fontSize: 48)),
+                                ],
+                              ),
+                              Spacer(),
                               Consumer(
                                 builder: (context, ref, child) {
                                   final data = ref.watch(budgetListProvider);
@@ -156,29 +178,18 @@ class _CreateTransactionScreenState
                                   );
                                 },
                               ),
-                              Gap(24),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Flexible(
-                                    child: FittedBox(
-                                      child: ListenableBuilder(
-                                        listenable: calculatePriceText,
-                                        builder:
-                                            (
-                                              BuildContext context,
-                                              Widget? child,
-                                            ) => Text(
-                                              calculatePriceText.amount,
-                                              style: TextStyle(fontSize: 80),
-                                            ),
-                                      ),
-                                    ),
+                              Gap(8),
+                              SizedBox(
+                                width: constraints.maxWidth * 0.6,
+                                child: FormBuilderTextField(
+                                  name: 'description',
+                                  decoration: customInputDecoration(
+                                    labelText: "Description",
+                                    hintText: "What's this for?",
                                   ),
-                                  Gap(12),
-                                  Text("IDR", style: TextStyle(fontSize: 48)),
-                                ],
+                                ),
                               ),
+                              Gap(6),
                             ],
                           ),
                         ),
