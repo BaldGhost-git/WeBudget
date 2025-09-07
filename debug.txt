@@ -1,0 +1,200 @@
+08-09 16:29:30.498  6224  6224 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-09 16:29:40.326 11890 11890 I Finsky  : [2] SCH: job service start with id 9346.
+08-09 16:29:40.346 11890 15460 I Finsky  : [1656] SCH: Satisfied jobs for 9346 are: 12-1
+08-09 16:29:40.347 11890 15745 I Finsky  : [1659] SCH: Job 12-1 starting
+08-09 16:29:40.348 11890 11890 I Finsky  : [2] [ContentSync] job started
+08-09 16:29:40.401 11890 11909 W android.vending: Missing inline cache for java.lang.Object mrf.apply(java.lang.Object)
+08-09 16:29:40.401 11890 11909 W android.vending: Missing inline cache for java.lang.Object mrf.apply(java.lang.Object)
+08-09 16:29:40.402 11890 11909 W android.vending: Missing inline cache for java.lang.Object mrf.apply(java.lang.Object)
+08-09 16:29:40.402 11890 11909 W android.vending: Missing inline cache for java.lang.Object mrf.apply(java.lang.Object)
+08-09 16:29:40.403 11890 11909 W android.vending: Missing inline cache for java.lang.Object mrf.apply(java.lang.Object)
+08-09 16:29:40.403 11890 11909 W android.vending: Missing inline cache for java.lang.Object mrf.apply(java.lang.Object)
+08-09 16:29:40.507 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.mainline.primary.libs' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.600 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.apex.cts.shim' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.647 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.appsearch' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.647 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.art' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.687 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.mediaprovider' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.708 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.virt' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.712 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.btservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.715 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.resolv' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.747 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.configinfrastructure' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.747 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.media' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.774 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.vndk.v31' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.778 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.vndk.v30' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.779 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.vndk.v33' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.789 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.vndk.v32' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.790 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.vndk.v34' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.882 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.sdkext' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.904 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.adservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:40.904 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.tethering' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.182 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.runtime' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.248 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.cellbroadcast' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.441 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.tzdata6' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.493 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.permission' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.598 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.wifi' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.841 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.media.swcodec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:41.890 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.profiling' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.060 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.adbd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.070 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.i18n' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.074 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.conscrypt' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.176 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.neuralnetworks' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.185 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.ipsec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.195 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.devicelock' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.231 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.ondevicepersonalization' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.240 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.healthfitness' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.316 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.uwb' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.317 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.extservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.404 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.os.statsd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.563 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.android.rkpd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.571 11890 11890 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.scheduling' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+08-09 16:29:42.636 15015 15015 W FinalizerDaemon: type=1400 audit(0.0:17801): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c210,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.example.we_budget
+08-09 16:29:42.647 11890 11890 I Finsky  : [2] App states replicator found 50 unowned apps
+08-09 16:29:42.662 11890 11890 I Finsky  : [2] Completed 0 account content syncs with 0 successful.
+08-09 16:29:42.662 11890 11890 I Finsky  : [2] [ContentSync] Installation state replication succeeded.
+08-09 16:29:42.662 11890 11890 I Finsky  : [2] SCH: jobFinished: 12-1. TimeElapsed: 2315ms.
+08-09 16:29:42.672 11890 11960 I Finsky  : [1560] SCH: Scheduling phonesky job Id: 1-1337, CT: 1754721471490, Constraints: [{ L: 42954775, D: 86154775, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+08-09 16:29:42.673 11890 11960 I Finsky  : [1560] SCH: Scheduling phonesky job Id: 34-1453, CT: 1754678980808, Constraints: [{ L: 604800000, D: 2462190246, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+08-09 16:29:42.673 11890 11960 I Finsky  : [1560] SCH: Scheduling phonesky job Id: 34-1457, CT: 1754698847669, Constraints: [{ L: 604800000, D: 2521526008, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+08-09 16:29:42.673 11890 11960 I Finsky  : [1560] SCH: Scheduling phonesky job Id: 34-1458, CT: 1754707640158, Constraints: [{ L: 79199014, D: 1375199014, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+08-09 16:29:42.674 11890 11960 I Finsky  : [1560] SCH: Scheduling phonesky job Id: 34-1461, CT: 1754729538145, Constraints: [{ L: 604800000, D: 2570102382, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+08-09 16:29:42.677 11890 11971 I Finsky  : [1566] SCH: Scheduling 1 system job(s)
+08-09 16:29:42.678 11890 11971 I Finsky  : [1566] SCH: Scheduling system job Id: 9353, L: 32643588, D: 75843588, C: false, I: false, N: 1
+08-09 16:29:42.684 11890 15745 I Finsky  : [1659] SCH: job service finished with id 9346.
+08-09 16:29:55.901 15015 15015 W WindowOnBackDispatcher: OnBackInvokedCallback is not enabled for the application.
+08-09 16:29:55.901 15015 15015 W WindowOnBackDispatcher: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+08-09 16:30:09.098 14886 14886 I Process : Sending signal. PID: 14886 SIG: 9
+08-09 16:30:15.402  6505  6505 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+08-09 16:30:34.939 15015 15015 I ImeTracker: com.example.we_budget:b0cbc945: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+08-09 16:30:34.989  7767  7767 D ViewRootImpl: AppSizeAfterRelayout, size: Point(1080, 2295), rotation: ROTATION_0
+08-09 16:30:34.990  7767  7767 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-09 16:30:34.984  7767  7767 W emoji.lite.vivo: type=1400 audit(0.0:17809): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=462 scontext=u:r:untrusted_app:s0:c172,c256,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.facemoji.lite.vivo
+08-09 16:30:35.041  7767  7784 W emoji.lite.vivo: Reducing the number of considered missed Gc histogram windows from 396 to 100
+08-09 16:30:35.050 15015 15015 D InsetsController: show(ime(), fromIme=true)
+08-09 16:30:35.060 15015 15015 W InteractionJankMonitor: Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.example.we_budget
+08-09 16:30:35.065  7767  7767 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-09 16:30:35.066  7767 15812 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-09 16:30:45.094  8361  8361 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:30:45.096  8361  8361 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:30:45.097  8361  8361 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:30:45.097  8361  8361 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:30:46.963 15015 15015 I Choreographer: Skipped 716 frames!  The application may be doing too much work on its main thread.
+08-09 16:30:46.965 15015 15015 I ImeTracker: com.example.we_budget:b0cbc945: onShown
+08-09 16:30:46.987 15015 15767 I HWUI    : Davey! duration=11853ms; Flags=0, FrameTimelineVsyncId=2507415, IntendedVsync=8326058496840, Vsync=8337897485956, InputEventId=0, HandleInputStart=8337904627391, AnimationStart=8337904629578, PerformTraversalsStart=8337907638380, DrawStart=8337907714526, FrameDeadline=8326075163506, FrameInterval=8337903984161, FrameStartTime=16534901, SyncQueued=8337907812651, SyncStart=8337907947755, IssueDrawCommandsStart=8337908368901, SwapBuffers=8337909730672, FrameCompleted=8337912469630, DequeueBufferDuration=40260, QueueBufferDuration=1198073, GpuCompleted=8337911395776, SwapBuffersCompleted=8337912469630, DisplayPresentTime=0, CommandSubmissionCompleted=8337909730672, 
+08-09 16:30:55.036 15015 15015 I Choreographer: Skipped 483 frames!  The application may be doing too much work on its main thread.
+08-09 16:30:57.705 15015 15015 I ImeTracker: com.example.we_budget:9a95f50a: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+08-09 16:30:57.708 15015 15015 I ImeTracker: com.example.we_budget:4a200798: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+08-09 16:30:57.804 15015 15015 D InsetsController: show(ime(), fromIme=true)
+08-09 16:30:57.805 15015 15015 I ImeTracker: com.example.we_budget:9a95f50a: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+08-09 16:30:57.806 15015 15015 D InsetsController: show(ime(), fromIme=true)
+08-09 16:30:57.807 15015 15015 I ImeTracker: com.example.we_budget:4a200798: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+08-09 16:30:59.283 15015 15015 I ImeTracker: com.example.we_budget:d8430dd5: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+08-09 16:30:59.306 15015 15015 D InsetsController: show(ime(), fromIme=true)
+08-09 16:30:59.306 15015 15015 I ImeTracker: com.example.we_budget:d8430dd5: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+08-09 16:31:00.192  7767  7767 I ImeTracker: com.facemoji.lite.vivo:bc588a24: onRequestHide at ORIGIN_IME reason HIDE_SOFT_INPUT_BY_BACK_KEY fromUser true
+08-09 16:31:00.207 15015 15015 D InsetsController: hide(ime(), fromIme=true)
+08-09 16:31:25.557 15015 15015 I Choreographer: Skipped 1530 frames!  The application may be doing too much work on its main thread.
+08-09 16:31:25.558 15015 15015 I ImeTracker: com.example.we_budget:6ebd160a: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT_ON_ANIMATION_STATE_CHANGED fromUser false
+08-09 16:31:25.559 15015 15015 I ImeTracker: com.facemoji.lite.vivo:bc588a24: onHidden
+08-09 16:31:25.597 15015 15553 I HWUI    : Davey! duration=25312ms; Flags=0, FrameTimelineVsyncId=2508107, IntendedVsync=8351193605941, Vsync=8376487406821, InputEventId=0, HandleInputStart=8376498043470, AnimationStart=8376498045501, PerformTraversalsStart=8376501692324, DrawStart=8376501765136, FrameDeadline=8351210272607, FrameInterval=8376497643522, FrameStartTime=16531896, SyncQueued=8376501844772, SyncStart=8376501972740, IssueDrawCommandsStart=8376502529772, SwapBuffers=8376503695761, FrameCompleted=8376506298782, DequeueBufferDuration=43333, QueueBufferDuration=1164323, GpuCompleted=8376505426751, SwapBuffersCompleted=8376506298782, DisplayPresentTime=0, CommandSubmissionCompleted=8376503695761, 
+08-09 16:31:26.100  7767  7767 D ViewRootImpl: AppSizeAfterRelayout, size: Point(1080, 2295), rotation: ROTATION_0
+08-09 16:31:29.258 15015 15015 I ImeTracker: com.example.we_budget:989f5127: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+08-09 16:31:31.408 15015 15015 W WindowOnBackDispatcher: OnBackInvokedCallback is not enabled for the application.
+08-09 16:31:31.408 15015 15015 W WindowOnBackDispatcher: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+08-09 16:31:34.718  6224 15541 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 8465553]
+08-09 16:31:34.722  6224 15541 W WakeLock: GCM_HB_ALARM release without a matched acquire!
+08-09 16:31:34.761  6224 15539 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 8695596]
+08-09 16:31:35.689 15015 15015 I Choreographer: Skipped 143 frames!  The application may be doing too much work on its main thread.
+08-09 16:31:38.340 15015 15015 I ImeTracker: com.example.we_budget:856c2dcf: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+08-09 16:31:38.405  7767  7767 D ViewRootImpl: AppSizeAfterRelayout, size: Point(1080, 2295), rotation: ROTATION_0
+08-09 16:31:38.406  7767  7767 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-09 16:31:38.400  7767  7767 W emoji.lite.vivo: type=1400 audit(0.0:17828): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=462 scontext=u:r:untrusted_app:s0:c172,c256,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.facemoji.lite.vivo
+08-09 16:31:38.457 15015 15015 D InsetsController: show(ime(), fromIme=true)
+08-09 16:31:38.478  7767  7767 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-09 16:31:38.480  7767 15922 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-09 16:31:48.622  8361  8376 W .lite.vivo:push: Reducing the number of considered missed Gc histogram windows from 101 to 100
+08-09 16:31:51.470 15015 15015 I Choreographer: Skipped 782 frames!  The application may be doing too much work on its main thread.
+08-09 16:31:51.472 15015 15015 I ImeTracker: com.example.we_budget:856c2dcf: onShown
+08-09 16:31:51.518 15015 15553 I HWUI    : Davey! duration=12947ms; Flags=0, FrameTimelineVsyncId=2510060, IntendedVsync=8389471583169, Vsync=8402399525841, InputEventId=0, HandleInputStart=8402411255491, AnimationStart=8402411258720, PerformTraversalsStart=8402414573303, DrawStart=8402414678303, FrameDeadline=8389488249835, FrameInterval=8402410665856, FrameStartTime=16531896, SyncQueued=8402414802418, SyncStart=8402414943876, IssueDrawCommandsStart=8402415158824, SwapBuffers=8402416720856, FrameCompleted=8402419317210, DequeueBufferDuration=60625, QueueBufferDuration=1001875, GpuCompleted=8402418392783, SwapBuffersCompleted=8402419317210, DisplayPresentTime=0, CommandSubmissionCompleted=8402416720856, 
+08-09 16:31:54.764 15015 15015 I Choreographer: Skipped 197 frames!  The application may be doing too much work on its main thread.
+08-09 16:32:03.167 17917 18063 D GmsGcmMcsSvc: Heartbeat initiated, reason: Intent { act=org.microg.gms.gcm.mcs.HEARTBEAT flg=0x4 cmp=app.revanced.android.gms/org.microg.gms.gcm.McsService (has extras) }
+08-09 16:32:03.177 17917 18063 D GmsGcmMcsSvc: Scheduling heartbeat in 300 seconds...
+08-09 16:32:03.180 17917 15248 D GmsGcmMcsOutput: Outgoing message: HeartbeatPing{last_stream_id_received=2}
+08-09 16:32:03.267 17917 15247 D GmsGcmMcsInput: Incoming message: HeartbeatAck{last_stream_id_received=2}
+08-09 16:32:03.274 17917 15247 D GmsGcmPrefs: learnReached: gcm_network_wifi / 300052
+08-09 16:32:05.694 15015 15015 I ImeTracker: com.example.we_budget:e170517d: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+08-09 16:32:05.727 15015 15015 D InsetsController: show(ime(), fromIme=true)
+08-09 16:32:05.727 15015 15015 I ImeTracker: com.example.we_budget:e170517d: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+08-09 16:32:07.665  7767  7767 I ImeTracker: com.facemoji.lite.vivo:31beeb3e: onRequestHide at ORIGIN_IME reason HIDE_SOFT_INPUT_BY_BACK_KEY fromUser true
+08-09 16:32:07.675 15015 15015 D InsetsController: hide(ime(), fromIme=true)
+08-09 16:32:15.531 11890 11960 I Finsky  : [1560] AIM: AppInfoManager-Perf > Destroying AppInfoManager ...
+08-09 16:32:18.935 15015 15015 I Choreographer: Skipped 673 frames!  The application may be doing too much work on its main thread.
+08-09 16:32:18.938 15015 15015 I ImeTracker: com.example.we_budget:4086469c: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT_ON_ANIMATION_STATE_CHANGED fromUser false
+08-09 16:32:18.940 15015 15015 I ImeTracker: com.facemoji.lite.vivo:31beeb3e: onHidden
+08-09 16:32:18.970 15015 15767 I HWUI    : Davey! duration=11230ms; Flags=0, FrameTimelineVsyncId=2510672, IntendedVsync=8418656382666, Vsync=8429873048884, InputEventId=0, HandleInputStart=8429877043293, AnimationStart=8429877045845, PerformTraversalsStart=8429882005533, DrawStart=8429882090845, FrameDeadline=8418673049332, FrameInterval=8429875967668, FrameStartTime=16666666, SyncQueued=8429882185689, SyncStart=8429882687199, IssueDrawCommandsStart=8429883003762, SwapBuffers=8429884537251, FrameCompleted=8429887265741, DequeueBufferDuration=48802, QueueBufferDuration=1002396, GpuCompleted=8429886351053, SwapBuffersCompleted=8429887265741, DisplayPresentTime=0, CommandSubmissionCompleted=8429884537251, 
+08-09 16:32:19.483  7767  7767 D ViewRootImpl: AppSizeAfterRelayout, size: Point(1080, 2295), rotation: ROTATION_0
+08-09 16:32:42.009 11418 11418 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:32:42.012 11418 27323 W Looper  : Slow delivery took 931555ms android.bg h=android.os.Handler c=android.os.BinderProxy$1@5ee77bf m=0
+08-09 16:32:42.013 11418 11418 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:32:42.013 11418 11418 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:32:42.014 11418 11418 D ActivityThread: Package [com.example.we_budget] reported as REPLACED, but missing application info. Assuming REMOVED.
+08-09 16:32:42.021 11418 27323 W Looper  : Drained
+08-09 16:32:42.577 11418 11433 W book.appmanager: Reducing the number of considered missed Gc histogram windows from 747 to 100
+08-09 16:32:55.644 15015 16067 I libc    : debuggerd signal invoked signal:11
+08-09 16:32:55.645 15015 16067 I libc    : debuggerd requestDump:0 NO_NEW_PRIVS:0
+--------- beginning of crash
+08-09 16:32:55.645 15015 16067 F libc    : Fatal signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x1718100017188 in tid 16067 (DartWorker), pid 15015 (ample.we_budget)
+08-09 16:32:55.645 15015 16067 I libc    : clone child process pid:16070
+08-09 16:32:55.646 15015 16067 I libc    : debuggerd pseudothread crash_process: 16067
+08-09 16:32:55.934 16073 16073 F DEBUG   : Softversion: PD2361CF_EX_A_15.1.13.0.W20.V000L1
+08-09 16:32:55.934 16073 16073 F DEBUG   : Time: 2025-08-09 16:32:55
+08-09 16:32:55.934 16073 16073 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+08-09 16:32:55.934 16073 16073 F DEBUG   : Build fingerprint: 'iQOO/I2218T/I2218:15/AP3A.240905.015.A2/compiler250702171050:user/release-keys'
+08-09 16:32:55.934 16073 16073 F DEBUG   : Revision: '0'
+08-09 16:32:55.934 16073 16073 F DEBUG   : ABI: 'arm64'
+08-09 16:32:55.934 16073 16073 F DEBUG   : Timestamp: 2025-08-09 16:32:55.774523074+0700
+08-09 16:32:55.934 16073 16073 F DEBUG   : Process uptime: 652s
+08-09 16:32:55.934 16073 16073 F DEBUG   : Cmdline: com.example.we_budget
+08-09 16:32:55.934 16073 16073 F DEBUG   : pid: 15015, tid: 16067, name: DartWorker  >>> com.example.we_budget <<<
+08-09 16:32:55.934 16073 16073 F DEBUG   : uid: 10466
+08-09 16:32:55.934 16073 16073 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+08-09 16:32:55.934 16073 16073 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+08-09 16:32:55.934 16073 16073 F DEBUG   : signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x0001718100017188
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x0  b400007a70825860  x1  0000007800008081  x2  0000000000000018  x3  0000000000000010
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x4  0000000000000000  x5  ffffffffffffffff  x6  00000000ffffffff  x7  b400007a706fc8b0
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x8  0001718100017181  x9  000000796d1d54f4  x10 b400007a70825850  x11 00000000ae59d15e
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x12 0000007972bd873c  x13 0000000000000001  x14 0000000000000001  x15 00000025f4a0389c
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x16 0000000000000001  x17 0000007ef7e636ec  x18 000000793cf5c000  x19 0000007972bd8430
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x20 0001718100017190  x21 b400007a70825860  x22 00000000ffffffff  x23 0000000000000fb5
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x24 0000000000000077  x25 000000007fffffff  x26 b400007a70825840  x27 000000003fffffbd
+08-09 16:32:55.934 16073 16073 F DEBUG   :     x28 0000000000000fb5  x29 0000007972bd9a80
+08-09 16:32:55.934 16073 16073 F DEBUG   :     lr  000000796ed04268  sp  0000007972bd8360  pc  000000796ed86fa8  pst 0000000060001000
+08-09 16:32:55.934 16073 16073 F DEBUG   : 21 total frames
+08-09 16:32:55.934 16073 16073 F DEBUG   : backtrace:
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #00 pc 0000000002322fa8  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #01 pc 00000000022a0264  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #02 pc 00000000022a448c  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #03 pc 00000000022a58a0  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #04 pc 00000000022aa110  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #05 pc 00000000022be72c  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #06 pc 00000000022a39c0  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #07 pc 00000000022a5f4c  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #08 pc 00000000022a6bb0  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #09 pc 00000000022a6790  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #10 pc 0000000002396d3c  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #11 pc 00000000023896f4  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #12 pc 0000000002389b98  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #13 pc 00000000022bb5a8  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #14 pc 00000000022dedb8  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #15 pc 00000000022df214  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #16 pc 00000000023b3198  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #17 pc 00000000023b331c  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #18 pc 0000000002369588  /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/lib/arm64/libflutter.so (BuildId: 104bd25a95de2f2be8c14f8cac23b5c3b96d8522)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #19 pc 00000000000b8c48  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+216) (BuildId: c0d54278852778c06fbb47ccf15afacc)
+08-09 16:32:55.934 16073 16073 F DEBUG   :       #20 pc 00000000000aafc8  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+68) (BuildId: c0d54278852778c06fbb47ccf15afacc)
+08-09 16:32:56.076  6959  6959 W bitpit.launcher: type=1400 audit(0.0:17830): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=462 scontext=u:r:untrusted_app:s0:c31,c256,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=bitpit.launcher
+08-09 16:32:56.065  6959  6959 D AudioManager: getDevices, flags = 2
+08-09 16:32:56.080  6959  6959 D ViewRootImpl: AppSizeAfterRelayout, size: Point(1080, 2400), rotation: ROTATION_0
+08-09 16:32:56.081  6959  6959 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-09 16:32:56.162  6959  6959 V ImeFocusController: onWindowFocus: com.android.internal.policy.DecorView{ec82ce4 V.E...... R......D 0,0-1080,2400 aid=0}[HomeActivity] softInputMode=STATE_ALWAYS_HIDDEN|ADJUST_RESIZE
+08-09 16:32:56.181  6505  6517 I gle.android.gms: CollectorTransition concurrent copying GC freed 7591KB AllocSpace bytes, 17(720KB) LOS objects, 49% free, 20MB/40MB, paused 172us,40us total 185.149ms
+08-09 16:32:56.186  6505  6519 W gle.android.gms: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~zY9kUHfXbR66RW1F3LuaOg==/com.example.we_budget-E_Yu8ujE-YM4OLcqXTk1sQ==/base.apk' with 1 weak references

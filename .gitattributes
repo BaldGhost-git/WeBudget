@@ -1,0 +1,9 @@
+# Default: LF for everything
+* text eol=lf
+# Exceptions for Windows-only files
+*.bat text eol=crlf
+
+# Dart build_runner outputs
+*.g.dart linguist-generated=true
+*.freezed.dart linguist-generated=true
+*.gen.dart linguist-generated=true
