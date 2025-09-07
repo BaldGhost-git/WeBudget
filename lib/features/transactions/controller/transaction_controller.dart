@@ -41,7 +41,7 @@ class TransactionController extends _$TransactionController {
       (element) => element.budgetId == budgetId,
     );
     final newTransaction = Transaction(
-      amount: int.parse((data['amount'] as String).replaceAll('.', '')),
+      amount: double.parse((data['amount'] as String)),
       budgetId: budgetId,
       description: data['description'] as String,
       trxDate: data['trx_date'] as DateTime,

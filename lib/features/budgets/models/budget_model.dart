@@ -18,7 +18,7 @@ class Budget with _$Budget {
   @JsonKey(name: "is_daily_spend")
   final bool isDailySpend;
   @JsonKey(name: "total_amount")
-  final int totalAmount;
+  final double totalAmount;
   @JsonKey(name: "created_at")
   final DateTime createdAt;
   @JsonKey(name: "modified_at")

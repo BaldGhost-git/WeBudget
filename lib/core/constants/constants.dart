@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 class Constants {
   static final DateFormat dateFormat = DateFormat('dd MMM y');
-  static String formatThousandFromInt(int number) {
+  static String formatThousandFromInt(double number) {
     return NumberFormat.decimalPattern('vi_VN').format(number);
   }
 }

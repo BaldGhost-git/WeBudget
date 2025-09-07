@@ -36,7 +36,7 @@ class HomeScreen extends ConsumerWidget {
               startDate: startDate as DateTime,
               name: name as String,
               description: description as String?,
-              totalAmount: int.parse(totalAmount as String),
+              totalAmount: double.parse(totalAmount as String),
               createdAt: DateTime.now(),
               resetDay: int.tryParse(resetDays as String),
               isDailySpend: isDailySpend as bool,

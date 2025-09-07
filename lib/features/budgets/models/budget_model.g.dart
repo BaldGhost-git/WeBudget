@@ -14,7 +14,7 @@ Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
   startDate: DateTime.parse(json['start_date'] as String),
   status: json['status'] as bool? ?? true,
   isDailySpend: json['is_daily_spend'] as bool,
-  totalAmount: (json['total_amount'] as num).toInt(),
+  totalAmount: (json['total_amount'] as num).toDouble(),
   createdAt: DateTime.parse(json['created_at'] as String),
   modifiedAt: json['modified_at'] == null
       ? null

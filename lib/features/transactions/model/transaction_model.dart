@@ -8,7 +8,7 @@ part 'transaction_model.freezed.dart';
 class Transaction with _$Transaction {
   @JsonKey(name: "trx_id")
   final int? trxId;
-  final int amount;
+  final double amount;
   @JsonKey(name: "budget_id")
   final int budgetId;
   final String description;

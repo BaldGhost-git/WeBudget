@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Transaction {
 
- int? get trxId; int get amount; int get budgetId; String get description; DateTime get trxDate; int get userId; DateTime get cycleStart; DateTime get createdAt; DateTime? get modifiedAt;
+ int? get trxId; double get amount; int get budgetId; String get description; DateTime get trxDate; int get userId; DateTime get cycleStart; DateTime get createdAt; DateTime? get modifiedAt;
 /// Create a copy of Transaction
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -67,7 +67,7 @@ class _$TransactionCopyWithImpl<$Res>
   return _then(Transaction(
 trxId: freezed == trxId ? _self.trxId : trxId // ignore: cast_nullable_to_non_nullable
 as int?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as int,budgetId: null == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
+as double,budgetId: null == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
 as int,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,trxDate: null == trxDate ? _self.trxDate : trxDate // ignore: cast_nullable_to_non_nullable
 as DateTime,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable

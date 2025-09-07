@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Budget {
 
- int? get budgetId; String get name; String? get description; int? get resetDay; DateTime get startDate; bool get status; bool get isDailySpend; int get totalAmount; DateTime get createdAt; DateTime? get modifiedAt;
+ int? get budgetId; String get name; String? get description; int? get resetDay; DateTime get startDate; bool get status; bool get isDailySpend; double get totalAmount; DateTime get createdAt; DateTime? get modifiedAt;
 /// Create a copy of Budget
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -73,7 +73,7 @@ as int?,startDate: null == startDate ? _self.startDate : startDate // ignore: ca
 as DateTime,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool,isDailySpend: null == isDailySpend ? _self.isDailySpend : isDailySpend // ignore: cast_nullable_to_non_nullable
 as bool,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
-as int,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as double,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime,modifiedAt: freezed == modifiedAt ? _self.modifiedAt : modifiedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
