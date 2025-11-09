@@ -1,27 +1,28 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'budget_model.g.dart';
 part 'budget_model.freezed.dart';
 
-@JsonSerializable()
 @Freezed(copyWith: true)
 class Budget with _$Budget {
-  @JsonKey(name: "budget_id", includeIfNull: false)
+  @override
   final int? budgetId;
+  @override
   final String name;
+  @override
   final String? description;
-  @JsonKey(name: "reset_day")
+  @override
   final int? resetDay;
-  @JsonKey(name: "start_date")
+  @override
   final DateTime startDate;
+  @override
   final bool status;
-  @JsonKey(name: "is_daily_spend")
+  @override
   final bool isDailySpend;
-  @JsonKey(name: "total_amount")
+  @override
   final double totalAmount;
-  @JsonKey(name: "created_at")
+  @override
   final DateTime createdAt;
-  @JsonKey(name: "modified_at")
+  @override
   final DateTime? modifiedAt;
 
   Budget({
@@ -36,10 +37,6 @@ class Budget with _$Budget {
     required this.createdAt,
     this.modifiedAt,
   });
-
-  factory Budget.fromJson(Map<String, dynamic> json) => _$BudgetFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BudgetToJson(this);
 
   int get daysBeforeReset => DateTime.now()
       .add(Duration(days: resetDay!))

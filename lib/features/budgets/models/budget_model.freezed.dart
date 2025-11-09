@@ -11,7 +11,6 @@ part of 'budget_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Budget {
 
@@ -29,7 +28,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Budget&&(identical(other.budgetId, budgetId) || other.budgetId == budgetId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.resetDay, resetDay) || other.resetDay == resetDay)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.status, status) || other.status == status)&&(identical(other.isDailySpend, isDailySpend) || other.isDailySpend == isDailySpend)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,budgetId,name,description,resetDay,startDate,status,isDailySpend,totalAmount,createdAt,modifiedAt);
 
@@ -46,7 +45,7 @@ abstract mixin class $BudgetCopyWith<$Res>  {
   factory $BudgetCopyWith(Budget value, $Res Function(Budget) _then) = _$BudgetCopyWithImpl;
 @useResult
 $Res call({
- int? budgetId, String name, String? description, int? resetDay, DateTime startDate, bool status, bool isDailySpend, int totalAmount, DateTime createdAt, DateTime? modifiedAt
+ int? budgetId, String name, String? description, int? resetDay, DateTime startDate, bool status, bool isDailySpend, double totalAmount, DateTime createdAt, DateTime? modifiedAt
 });
 
 

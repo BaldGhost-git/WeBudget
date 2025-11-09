@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'budget_model.dart';
+part of 'budget_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
+BudgetDto _$BudgetDtoFromJson(Map<String, dynamic> json) => BudgetDto(
   budgetId: (json['budget_id'] as num?)?.toInt(),
   name: json['name'] as String,
   description: json['description'] as String?,
@@ -21,7 +21,7 @@ Budget _$BudgetFromJson(Map<String, dynamic> json) => Budget(
       : DateTime.parse(json['modified_at'] as String),
 );
 
-Map<String, dynamic> _$BudgetToJson(Budget instance) => <String, dynamic>{
+Map<String, dynamic> _$BudgetDtoToJson(BudgetDto instance) => <String, dynamic>{
   if (instance.budgetId case final value?) 'budget_id': value,
   'name': instance.name,
   if (instance.description case final value?) 'description': value,

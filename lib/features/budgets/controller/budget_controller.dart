@@ -32,7 +32,7 @@ class BudgetController extends _$BudgetController {
   Future<void> createBudget(Budget newBudget) async {
     state = AsyncValue.loading();
     state = await AsyncValue.guard(
-      () => ref.read(budgetRepositoryProvider).createBudget(newBudget.toJson()),
+      () => ref.read(budgetRepositoryProvider).createBudget(newBudget),
     );
     if (state is AsyncData) {
       ref.invalidate(budgetListProvider);
@@ -42,7 +42,7 @@ class BudgetController extends _$BudgetController {
   Future<void> updateBudget(Budget newBudget) async {
     state = AsyncValue.loading();
     state = await AsyncValue.guard(
-      () => ref.read(budgetRepositoryProvider).updateBudget(newBudget.toJson()),
+      () => ref.read(budgetRepositoryProvider).updateBudget(newBudget),
     );
     if (state is AsyncData) {
       ref.invalidate(budgetListProvider);
