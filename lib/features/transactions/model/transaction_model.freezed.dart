@@ -11,7 +11,6 @@ part of 'transaction_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Transaction {
 
@@ -29,7 +28,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Transaction&&(identical(other.trxId, trxId) || other.trxId == trxId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.budgetId, budgetId) || other.budgetId == budgetId)&&(identical(other.description, description) || other.description == description)&&(identical(other.trxDate, trxDate) || other.trxDate == trxDate)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.cycleStart, cycleStart) || other.cycleStart == cycleStart)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,trxId,amount,budgetId,description,trxDate,userId,cycleStart,createdAt,modifiedAt);
 
@@ -46,7 +45,7 @@ abstract mixin class $TransactionCopyWith<$Res>  {
   factory $TransactionCopyWith(Transaction value, $Res Function(Transaction) _then) = _$TransactionCopyWithImpl;
 @useResult
 $Res call({
- int? trxId, int amount, int budgetId, String description, DateTime trxDate, int userId, DateTime cycleStart, DateTime createdAt, DateTime? modifiedAt
+ int? trxId, double amount, int budgetId, String description, DateTime trxDate, int userId, DateTime cycleStart, DateTime createdAt, DateTime? modifiedAt
 });
 
 

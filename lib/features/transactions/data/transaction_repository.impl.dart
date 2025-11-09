@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:we_budget/core/clients/supabase.dart';
+import 'package:we_budget/features/transactions/data/transaction_dto.dart';
 import 'package:we_budget/features/transactions/data/transaction_repository.dart';
 import 'package:we_budget/features/transactions/model/transaction_model.dart';
 
@@ -10,20 +11,22 @@ class TransactionRepositoryImpl implements TransactionRepository {
   TransactionRepositoryImpl({required this.client});
 
   @override
-  Future<String> createTransaction(Map<String, dynamic> json) async {
-    await client.from(table).insert(json);
+  Future<String> createTransaction(Transaction trx) async {
+    await client
+        .from(table)
+        .insert(TransactionDtoMapper.fromDomain(trx).toJson());
     return "Transaction created";
   }
 
   @override
   Future<List<Transaction>?> getTransaction(int? trxId) async {
-    final List<Map<String, dynamic>> budgets = await client
+    final List<Map<String, dynamic>> transactions = await client
         .from(table)
         .select()
         .maybeEq('trx_id', trxId);
-    if (budgets.isEmpty) return null;
-    final List<Transaction> data = budgets
-        .map((e) => Transaction.fromJson(e))
+    if (transactions.isEmpty) return null;
+    final List<Transaction> data = transactions
+        .map((e) => TransactionDto.fromJson(e).toDomain())
         .toList();
     return data;
   }
@@ -35,8 +38,11 @@ class TransactionRepositoryImpl implements TransactionRepository {
   }
 
   @override
-  Future<String?> updateTransaction(Map<String, dynamic> json) async {
-    await client.from(table).update(json).eq('trx_id', json["trx_id"]);
+  Future<String?> updateTransaction(Transaction trx) async {
+    await client
+        .from(table)
+        .update(TransactionDtoMapper.fromDomain(trx).toJson())
+        .eq('trx_id', trx.trxId!);
     return "Transaction updated";
   }
 }
