@@ -7,3 +7,19 @@
 *.g.dart linguist-generated=true
 *.freezed.dart linguist-generated=true
 *.gen.dart linguist-generated=true
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.ttf binary
+*.otf binary
+*.aab binary
+*.apk binary
+*.ipa binary
+*.keystore binary
+*.jar binary

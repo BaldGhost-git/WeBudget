@@ -52,6 +52,26 @@ class CalculatorPads extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   crossAxisCount: 4,
                   children: [
+                    buttonPads(
+                      text: 'C',
+                      color: theme.colorScheme.tertiaryContainer,
+                      onTap: () => controller.zero(),
+                    ),
+                    buttonPads(
+                      child: Icon(Icons.backspace, size: 35),
+                      color: theme.colorScheme.tertiaryContainer,
+                      onTap: () => controller.delete(),
+                    ),
+                    buttonPads(
+                      text: "=",
+                      color: theme.colorScheme.tertiaryContainer,
+                      onTap: () => controller.calculate(),
+                    ),
+                    buttonPads(
+                      text: "/",
+                      color: theme.colorScheme.tertiaryContainer,
+                      onTap: () => controller.add("/"),
+                    ),
                     buttonPads(text: '1', onTap: () => controller.add("1")),
                     buttonPads(text: '2', onTap: () => controller.add("2")),
                     buttonPads(text: '3', onTap: () => controller.add("3")),
@@ -76,22 +96,9 @@ class CalculatorPads extends StatelessWidget {
                       color: theme.colorScheme.tertiaryContainer,
                       onTap: () => controller.add("x"),
                     ),
-                    buttonPads(
-                      text: 'C',
-                      color: theme.colorScheme.tertiaryContainer,
-                      onTap: () => controller.zero(),
-                    ),
+                    buttonPads(text: '00', onTap: () => controller.add("00")),
                     buttonPads(text: '0', onTap: () => controller.add("0")),
-                    buttonPads(
-                      child: Icon(Icons.backspace, size: 35),
-                      color: theme.colorScheme.tertiaryContainer,
-                      onTap: () => controller.delete(),
-                    ),
-                    buttonPads(
-                      text: "/",
-                      color: theme.colorScheme.tertiaryContainer,
-                      onTap: () => controller.add("/"),
-                    ),
+                    buttonPads(text: '.', onTap: () => controller.add(".")),
                   ],
                 ),
               ),

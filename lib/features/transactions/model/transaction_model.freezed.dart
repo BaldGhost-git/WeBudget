@@ -11,11 +11,10 @@ part of 'transaction_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Transaction {
 
- int? get trxId; int get amount; int get budgetId; String get description; DateTime get trxDate; int get userId; DateTime get cycleStart; DateTime get createdAt; DateTime? get modifiedAt;
+ int? get trxId; double get amount; int get budgetId; String get description; DateTime get trxDate; int get userId; DateTime get cycleStart; DateTime get createdAt; DateTime? get modifiedAt;
 /// Create a copy of Transaction
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,7 +28,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Transaction&&(identical(other.trxId, trxId) || other.trxId == trxId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.budgetId, budgetId) || other.budgetId == budgetId)&&(identical(other.description, description) || other.description == description)&&(identical(other.trxDate, trxDate) || other.trxDate == trxDate)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.cycleStart, cycleStart) || other.cycleStart == cycleStart)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.modifiedAt, modifiedAt) || other.modifiedAt == modifiedAt));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,trxId,amount,budgetId,description,trxDate,userId,cycleStart,createdAt,modifiedAt);
 
@@ -46,7 +45,7 @@ abstract mixin class $TransactionCopyWith<$Res>  {
   factory $TransactionCopyWith(Transaction value, $Res Function(Transaction) _then) = _$TransactionCopyWithImpl;
 @useResult
 $Res call({
- int? trxId, int amount, int budgetId, String description, DateTime trxDate, int userId, DateTime cycleStart, DateTime createdAt, DateTime? modifiedAt
+ int? trxId, double amount, int budgetId, String description, DateTime trxDate, int userId, DateTime cycleStart, DateTime createdAt, DateTime? modifiedAt
 });
 
 
@@ -67,7 +66,7 @@ class _$TransactionCopyWithImpl<$Res>
   return _then(Transaction(
 trxId: freezed == trxId ? _self.trxId : trxId // ignore: cast_nullable_to_non_nullable
 as int?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as int,budgetId: null == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
+as double,budgetId: null == budgetId ? _self.budgetId : budgetId // ignore: cast_nullable_to_non_nullable
 as int,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,trxDate: null == trxDate ? _self.trxDate : trxDate // ignore: cast_nullable_to_non_nullable
 as DateTime,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable

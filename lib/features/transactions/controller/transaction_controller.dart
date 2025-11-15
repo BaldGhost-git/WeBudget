@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:we_budget/core/clients/supabase.dart';
@@ -41,7 +40,7 @@ class TransactionController extends _$TransactionController {
       (element) => element.budgetId == budgetId,
     );
     final newTransaction = Transaction(
-      amount: int.parse((data['amount'] as String).replaceAll('.', '')),
+      amount: double.parse((data['amount'] as String)),
       budgetId: budgetId,
       description: data['description'] as String,
       trxDate: data['trx_date'] as DateTime,
@@ -52,7 +51,7 @@ class TransactionController extends _$TransactionController {
     state = await AsyncValue.guard(
       () => ref
           .read(transactionRepositoryProvider)
-          .createTransaction(newTransaction.toJson()),
+          .createTransaction(newTransaction),
     );
     if (state is AsyncData) {
       ref.invalidate(transactionListProvider);
@@ -64,7 +63,7 @@ class TransactionController extends _$TransactionController {
     state = await AsyncValue.guard(
       () => ref
           .read(transactionRepositoryProvider)
-          .updateTransaction(newTransaction.toJson()),
+          .updateTransaction(newTransaction),
     );
     if (state is AsyncData) {
       ref.invalidate(transactionListProvider);

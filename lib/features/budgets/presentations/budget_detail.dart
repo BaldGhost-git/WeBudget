@@ -61,7 +61,7 @@ class _BudgetDetailState extends ConsumerState<BudgetDetail> {
               startDate: startDate as DateTime,
               name: name as String,
               description: description as String?,
-              totalAmount: int.parse(totalAmount as String),
+              totalAmount: double.parse(totalAmount as String),
               modifiedAt: DateTime.now(),
               resetDay: resetDays as int?,
               isDailySpend: isDailySpend as bool,

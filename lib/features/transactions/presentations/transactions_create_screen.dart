@@ -23,7 +23,7 @@ class CreateTransactionScreen extends ConsumerStatefulWidget {
 
 class _CreateTransactionScreenState
     extends ConsumerState<CreateTransactionScreen> {
-  // final formKey = GlobalKey<FormBuilderState>();
+  final formKey = GlobalKey<FormBuilderState>();
   final AmountText calculatePriceText = AmountText();
 
   @override
@@ -56,7 +56,26 @@ class _CreateTransactionScreenState
         title: Text("New Transactions"),
         automaticallyImplyLeading: false,
         centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.check))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              if (!((formKey.currentState?.saveAndValidate()) ?? false)) {
+                return;
+              }
+              if (calculatePriceText.amount == '0') return;
+              final newTransaction = {
+                'amount': calculatePriceText.amount,
+                'budget_id': formKey.currentState!.value['budget_id'],
+                'description': formKey.currentState!.value['description'],
+                'trx_date': DateTime.now(),
+              };
+              ref
+                  .read(transactionControllerProvider.notifier)
+                  .createTransaction(newTransaction);
+            },
+            icon: Icon(Icons.check),
+          ),
+        ],
         leading: IconButton(onPressed: () {}, icon: Icon(Icons.close)),
       ),
       body: SafeArea(
@@ -64,7 +83,7 @@ class _CreateTransactionScreenState
         top: false,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final topContainerHeight = constraints.maxHeight * 0.4;
+            final topContainerHeight = constraints.maxHeight * 0.43;
             return Stack(
               children: [
                 Container(height: topContainerHeight, color: Colors.grey[300]),
@@ -76,87 +95,103 @@ class _CreateTransactionScreenState
                     children: [
                       SizedBox(
                         height: topContainerHeight,
-                        child: Column(
-                          children: [
-                            Gap(constraints.maxHeight * 0.12),
-                            Consumer(
-                              builder: (context, ref, child) {
-                                final data = ref.watch(budgetListProvider);
-                                return data.when(
-                                  data: (budgets) {
-                                    if (budgets?.isEmpty ?? true) {
+                        child: FormBuilder(
+                          key: formKey,
+                          child: Column(
+                            children: [
+                              Gap(constraints.maxHeight * 0.12),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Flexible(
+                                    child: FittedBox(
+                                      child: ListenableBuilder(
+                                        listenable: calculatePriceText,
+                                        builder:
+                                            (
+                                              BuildContext context,
+                                              Widget? child,
+                                            ) => Text(
+                                              calculatePriceText.amount,
+                                              style: TextStyle(fontSize: 80),
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Gap(12),
+                                  Text("IDR", style: TextStyle(fontSize: 48)),
+                                ],
+                              ),
+                              Spacer(),
+                              Consumer(
+                                builder: (context, ref, child) {
+                                  final data = ref.watch(budgetListProvider);
+                                  return data.when(
+                                    data: (budgets) {
+                                      if (budgets?.isEmpty ?? true) {
+                                        return Center(
+                                          child: FormBuilderTextField(
+                                            name: 'budget_id',
+                                            enabled: false,
+                                            decoration: customInputDecoration(
+                                              labelText: "Budget",
+                                              hintText:
+                                                  "You don't have any budget",
+                                            ),
+                                          ),
+                                        );
+                                      }
                                       return Center(
-                                        child: FormBuilderTextField(
-                                          name: 'budget_id',
-                                          enabled: false,
-                                          decoration: customInputDecoration(
-                                            labelText: "Budget",
-                                            hintText:
-                                                "You don't have any budget",
+                                        child: SizedBox(
+                                          width: constraints.maxWidth * 0.6,
+                                          child: FormBuilderDropdown(
+                                            name: 'budget_id',
+                                            items: budgets!
+                                                .map(
+                                                  (budget) => DropdownMenuItem(
+                                                    value: budget.budgetId,
+                                                    child: Text(budget.name),
+                                                  ),
+                                                )
+                                                .toList(),
+                                            decoration: customInputDecoration(
+                                              labelText: "Budget",
+                                              hintText: "Select your budget",
+                                            ),
+                                            validator:
+                                                FormBuilderValidators.required(
+                                                  errorText:
+                                                      "Budget is required",
+                                                ),
                                           ),
                                         ),
                                       );
-                                    }
-                                    return Center(
-                                      child: SizedBox(
-                                        width: constraints.maxWidth * 0.6,
-                                        child: FormBuilderDropdown(
-                                          name: 'budget_id',
-                                          items: budgets!
-                                              .map(
-                                                (budget) => DropdownMenuItem(
-                                                  value: budget.budgetId,
-                                                  child: Text(budget.name),
-                                                ),
-                                              )
-                                              .toList(),
-                                          decoration: customInputDecoration(
-                                            labelText: "Budget",
-                                            hintText: "Select your budget",
-                                          ),
-                                          validator:
-                                              FormBuilderValidators.required(
-                                                errorText: "Budget is required",
-                                              ),
-                                        ),
+                                    },
+                                    error: (err, st) => Text(err.toString()),
+                                    loading: () => FormBuilderTextField(
+                                      enabled: false,
+                                      name: 'budget_id',
+                                      decoration: customInputDecoration(
+                                        labelText: "Budget",
                                       ),
-                                    );
-                                  },
-                                  error: (err, st) => Text(err.toString()),
-                                  loading: () => FormBuilderTextField(
-                                    enabled: false,
-                                    name: 'budget_id',
-                                    decoration: customInputDecoration(
-                                      labelText: "Budget",
                                     ),
-                                  ),
-                                );
-                              },
-                            ),
-                            Gap(24),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Flexible(
-                                  child: FittedBox(
-                                    child: ListenableBuilder(
-                                      listenable: calculatePriceText,
-                                      builder:
-                                          (
-                                            BuildContext context,
-                                            Widget? child,
-                                          ) => Text(
-                                            calculatePriceText.amount,
-                                            style: TextStyle(fontSize: 80),
-                                          ),
-                                    ),
+                                  );
+                                },
+                              ),
+                              Gap(8),
+                              SizedBox(
+                                width: constraints.maxWidth * 0.6,
+                                child: FormBuilderTextField(
+                                  name: 'description',
+                                  decoration: customInputDecoration(
+                                    labelText: "Description",
+                                    hintText: "What's this for?",
                                   ),
                                 ),
-                                Gap(12),
-                                Text("IDR", style: TextStyle(fontSize: 48)),
-                              ],
-                            ),
-                          ],
+                              ),
+                              Gap(6),
+                            ],
+                          ),
                         ),
                       ),
                       Gap(6),

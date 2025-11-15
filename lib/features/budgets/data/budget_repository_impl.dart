@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:we_budget/core/clients/supabase.dart';
+import 'package:we_budget/features/budgets/data/budget_dto.dart';
 import 'package:we_budget/features/budgets/data/budget_repository.dart';
 import 'package:we_budget/features/budgets/models/budget_model.dart';
 
@@ -10,9 +11,11 @@ class BudgetRepositoryImpl implements BudgetRepository {
   BudgetRepositoryImpl({required this.client});
 
   @override
-  Future<String> createBudget(Map<String, dynamic> json) async {
-    await client.from(table).insert(json);
-    return "${json["name"].trim()} budget created";
+  Future<String> createBudget(Budget newBudget) async {
+    await client
+        .from(table)
+        .insert(BudgetDtoMapper.fromDomain(newBudget).toJson());
+    return "${newBudget.name.trim()} budget created";
   }
 
   @override
@@ -23,7 +26,9 @@ class BudgetRepositoryImpl implements BudgetRepository {
         .eq('status', true)
         .maybeEq('budget_id', budgetId);
     if (budgets.isEmpty) return null;
-    final List<Budget> data = budgets.map((e) => Budget.fromJson(e)).toList();
+    final List<Budget> data = budgets
+        .map((e) => BudgetDto.fromJson(e).toDomain())
+        .toList();
     return data;
   }
 
@@ -37,8 +42,11 @@ class BudgetRepositoryImpl implements BudgetRepository {
   }
 
   @override
-  Future<String?> updateBudget(Map<String, dynamic> json) async {
-    await client.from(table).update(json).eq('budget_id', json["budget_id"]);
-    return "${json["name"].trim()} budget updated";
+  Future<String?> updateBudget(Budget newBudget) async {
+    await client
+        .from(table)
+        .update(BudgetDtoMapper.fromDomain(newBudget).toJson())
+        .eq('budget_id', newBudget.budgetId!);
+    return "${newBudget.name.trim()} budget updated";
   }
 }
